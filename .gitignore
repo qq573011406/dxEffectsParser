@@ -37,3 +37,5 @@ src/dxeffect_tab.h
 src/Gen_dxeffect_tab.cpp
 src/Gen_dxeffect.cpp
 tools/bin/dxeffect.output
+
+!tools/**/*.*
