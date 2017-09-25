@@ -1,4 +1,7 @@
+
+%option outfile="Gen_dxeffect.cpp"
 %{
+    #define YY_NO_UNISTD_H
     #include "find.tab.h"
     int yylval = 0;
 %}
