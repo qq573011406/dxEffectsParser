@@ -261,6 +261,9 @@ static void yy_flex_free YY_PROTO(( void * ));
 
 #define YY_AT_BOL() (yy_current_buffer->yy_at_bol)
 
+
+#define yywrap() 1
+#define YY_SKIP_YYWRAP
 typedef unsigned char YY_CHAR;
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
 typedef int yy_state_type;
@@ -282,12 +285,13 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 10
-#define YY_END_OF_BUFFER 11
-static yyconst short int yy_accept[15] =
+#define YY_NUM_RULES 6
+#define YY_END_OF_BUFFER 7
+static yyconst short int yy_accept[23] =
     {   0,
-        0,    0,   11,    9,    8,    7,    3,    1,    2,    4,
-        6,    5,    6,    0
+        0,    0,    7,    5,    1,    1,    4,    4,    4,    4,
+        4,    4,    4,    4,    3,    4,    4,    4,    4,    4,
+        2,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -296,16 +300,16 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    5,    1,    6,    1,    7,    8,    8,    8,
-        8,    8,    8,    8,    8,    8,    8,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
+        1,    1,    1,    1,    5,    5,    5,    5,    5,    5,
+        5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
+        5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
+        1,    1,    1,    1,    5,    1,    6,    5,    7,    5,
 
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    9,    1,    1,    1,    1,    1,    1,
+        8,    5,    5,    9,   10,    5,    5,    5,    5,   11,
+        5,   12,   13,    5,   14,   15,   16,    5,    5,    5,
+        5,    5,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -322,35 +326,44 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[10] =
+static yyconst int yy_meta[17] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1
+        1,    1,    1,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2
     } ;
 
-static yyconst short int yy_base[15] =
+static yyconst short int yy_base[25] =
     {   0,
-        0,    0,   12,   13,   13,   13,   13,   13,   13,   13,
-        3,   13,    2,   13
+        0,   15,   34,   35,   35,   35,    0,   27,   21,    0,
+       14,   19,   11,   15,    0,   12,   12,    8,    4,    0,
+        0,   35,   30,    3
     } ;
 
-static yyconst short int yy_def[15] =
+static yyconst short int yy_def[25] =
     {   0,
-       14,    1,   14,   14,   14,   14,   14,   14,   14,   14,
-       14,   14,   14,    0
+       23,   23,   22,   22,   22,   22,   24,   24,   24,   24,
+       24,   24,   24,   24,   24,   24,   24,   24,   24,   24,
+       24,    0,   22,   22
     } ;
 
-static yyconst short int yy_nxt[23] =
+static yyconst short int yy_nxt[52] =
     {   0,
-        4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
-       13,   14,    3,   14,   14,   14,   14,   14,   14,   14,
-       14,   14
+        4,    5,    6,    4,   10,   22,   22,   21,   22,   22,
+       22,    8,   22,   22,    9,    4,    5,    6,    4,   20,
+       19,   18,   17,   16,   15,   14,    8,   13,   12,    9,
+        7,    7,   11,   22,    3,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
+       22
     } ;
 
-static yyconst short int yy_chk[23] =
+static yyconst short int yy_chk[52] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,   13,
-       11,    3,   14,   14,   14,   14,   14,   14,   14,   14,
-       14,   14
+        1,    1,    1,    1,   24,    0,    0,   20,    0,    0,
+        0,    1,    0,    0,    1,    2,    2,    2,    2,   19,
+       18,   17,   16,   14,   13,   12,    2,   11,    9,    2,
+       23,   23,    8,    3,   22,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
+       22
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -366,9 +379,11 @@ char *yytext;
 #line 1 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
 #define INITIAL 0
 #line 4 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-    #include "dxeffect_tab.h"
+	#define YY_NO_UNISTD_H
+    #include<stdio.h>
+    //#include "dxeffect_tab.h"
     int yylval = 0;
-#line 372 "Gen_dxeffect.c"
+#line 387 "Gen_dxeffect.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -515,10 +530,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 8 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+#line 13 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
 
 
-#line 522 "Gen_dxeffect.c"
+#line 537 "Gen_dxeffect.c"
 
 	if ( yy_init )
 		{
@@ -569,13 +584,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 15 )
+				if ( yy_current_state >= 23 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 13 );
+		while ( yy_base[yy_current_state] != 35 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -603,55 +618,35 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return ADD;}
+#line 15 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+{}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 11 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return SUB;}
+#line 16 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+{fprintf(yyout,"find tec\n");}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 12 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return MUL;}
+#line 17 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+{fprintf(yyout,"find pass\n");}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 13 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return DIV;}
+#line 18 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+{fprintf(yyout,"find identifier:%s\n",yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 14 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return ABS;}
+#line 19 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
+{}
 	YY_BREAK
 case 6:
-YY_RULE_SETUP
-#line 15 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{yylval = atoi(yytext);return NUMBER;}
-	YY_BREAK
-case 7:
-YY_RULE_SETUP
-#line 16 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{return EOL;}
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 17 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{/* ignore */}
-	YY_BREAK
-case 9:
-YY_RULE_SETUP
-#line 18 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
-{printf("Mystery charater %c\n",*yytext);}
-	YY_BREAK
-case 10:
 YY_RULE_SETUP
 #line 20 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
 ECHO;
 	YY_BREAK
-#line 655 "Gen_dxeffect.c"
+#line 650 "Gen_dxeffect.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -940,7 +935,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 15 )
+			if ( yy_current_state >= 23 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -975,11 +970,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 15 )
+		if ( yy_current_state >= 23 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 14);
+	yy_is_jam = (yy_current_state == 22);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1513,4 +1508,18 @@ int main()
 #endif
 #line 20 "E:/Source/GitRepos/dxEffectsParser/src/dxeffect.l"
 
-int yywrap(){return 1;}  
+int main(int argc,char**argv)
+{
+    if(argc >= 2){
+        FILE* file = fopen(argv[1],"r");
+		yyin = file;
+		if(argc >= 3){
+			FILE* outFile = fopen(argv[2],"w+");
+			if(outFile){
+				yyout = outFile;
+			}
+		}
+    }
+    yylex();
+    return 0;
+}

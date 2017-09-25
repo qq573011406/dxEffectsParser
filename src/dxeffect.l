@@ -1,21 +1,35 @@
-
+%option noyywrap
 %option outfile="Gen_dxeffect.c"
 %{
-    #include "dxeffect_tab.h"
+	#define YY_NO_UNISTD_H
+    #include<stdio.h>
+    //#include "dxeffect_tab.h"
     int yylval = 0;
 %}
 
-%%
+IDENTIFIER [a-zA-Z_][a-zA-Z0-9_]* 
 
-"+" {return ADD;}
-"-" {return SUB;}
-"*" {return MUL;}
-"/" {return DIV;}
-"|" {return ABS;}
-[0-9]+ {yylval = atoi(yytext);return NUMBER;}
-\n {return EOL;}
-[ \t] {/* ignore */}
-. {printf("Mystery charater %c\n",*yytext);}
 
 %%
-int yywrap(){return 1;}  
+
+[ \t\n]			{}
+"technique"		{fprintf(yyout,"find tec\n");}
+"pass"			{fprintf(yyout,"find pass\n");}
+{IDENTIFIER}	{fprintf(yyout,"find identifier:%s\n",yytext);}
+.				{}
+%%
+int main(int argc,char**argv)
+{
+    if(argc >= 2){
+        FILE* file = fopen(argv[1],"r");
+		yyin = file;
+		if(argc >= 3){
+			FILE* outFile = fopen(argv[2],"w+");
+			if(outFile){
+				yyout = outFile;
+			}
+		}
+    }
+    yylex();
+    return 0;
+}
