@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[])
 {
-    CalcContext calc;
+    DxEffectsTree calc;
     example::Driver driver(calc);
     bool readfile = false;
 
@@ -31,21 +31,21 @@ int main(int argc, char *argv[])
 		return 0;
 	    }
 
-	    calc.clearExpressions();
+	 //   calc.clearExpressions();
 	    bool result = driver.parse_stream(infile, argv[ai]);
 	    if (result)
-	    {
-		std::cout << "Expressions:" << std::endl;
-		for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
 		{
-		    std::cout << "[" << ei << "]:" << std::endl;
-		    std::cout << "tree:" << std::endl;
-		    calc.expressions[ei]->print(std::cout);
-		    std::cout << "evaluated: "
-			      << calc.expressions[ei]->evaluate()
-			      << std::endl;
+			std::cout << "Expressions:" << std::endl;
+			//for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
+			//{
+			//	std::cout << "[" << ei << "]:" << std::endl;
+			//	std::cout << "tree:" << std::endl;
+			//	calc.expressions[ei]->print(std::cout);
+			//	std::cout << "evaluated: "
+			//		<< calc.expressions[ei]->evaluate()
+			//		<< std::endl;
+			//}
 		}
-	    }
 
 	    readfile = true;
 	}
@@ -60,19 +60,19 @@ int main(int argc, char *argv[])
 	   std::getline(std::cin, line) &&
 	   !line.empty() )
     {
-	calc.clearExpressions();
+	//calc.clearExpressions();
 	bool result = driver.parse_string(line, "input");
 
 	if (result)
 	{
-	    for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
-	    {
-		std::cout << "tree:" << std::endl;
-		calc.expressions[ei]->print(std::cout);
-		std::cout << "evaluated: "
-			  << calc.expressions[ei]->evaluate()
-			  << std::endl;
-	    }
+		//for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
+		//{
+		//	std::cout << "tree:" << std::endl;
+		//	calc.expressions[ei]->print(std::cout);
+		//	std::cout << "evaluated: "
+		//		<< calc.expressions[ei]->evaluate()
+		//		<< std::endl;
+		//}
 	}
     }
 }

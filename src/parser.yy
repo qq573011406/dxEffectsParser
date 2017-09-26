@@ -54,24 +54,24 @@
  /*** BEGIN EXAMPLE - Change the example grammar's tokens below ***/
 
 %union {
-    int  			integerVal;
-    double 			doubleVal;
     std::string*		stringVal;
-    class CalcNode*		calcnode;
+    class TechniqueNode*		technique;
+	class PassNode*				pass;
+	class StateAssignmentNode*  stateAssignment;
 }
 
-%token			END	     0	"end of file"
-%token			EOL		"end of line"
-%token <integerVal> 	INTEGER		"integer"
-%token <doubleVal> 	DOUBLE		"double"
-%token <stringVal> 	STRING		"string"
+%token <stringVal> 	IDENTIFIER
+%token <technique> 	TECHNIQUE
+%token <pass> 		PASS 
+%token				END	     0	"end of file"
 
-%type <calcnode>	constant variable
-%type <calcnode>	atomexpr powexpr unaryexpr mulexpr addexpr expr
+//%type <technique>	technique_stat
+//%type <pass>	pass_stat
+//%type <stateAssignment>	stateassignment_stat
 
-%destructor { delete $$; } STRING
-%destructor { delete $$; } constant variable
-%destructor { delete $$; } atomexpr powexpr unaryexpr mulexpr addexpr expr
+%destructor { delete $$; } IDENTIFIER
+%destructor { delete $$; } TECHNIQUE
+%destructor { delete $$; } PASS
 
  /*** END EXAMPLE - Change the example grammar's tokens above ***/
 
@@ -92,125 +92,7 @@
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
 
-constant : INTEGER
-           {
-	       $$ = new CNConstant($1);
-	   }
-         | DOUBLE
-           {
-	       $$ = new CNConstant($1);
-	   }
-
-variable : STRING
-           {
-	       if (!driver.calc.existsVariable(*$1)) {
-		   error(yyloc, std::string("Unknown variable \"") + *$1 + "\"");
-		   delete $1;
-		   YYERROR;
-	       }
-	       else {
-		   $$ = new CNConstant( driver.calc.getVariable(*$1) );
-		   delete $1;
-	       }
-	   }
-
-atomexpr : constant
-           {
-	       $$ = $1;
-	   }
-         | variable
-           {
-	       $$ = $1;
-	   }
-         | '(' expr ')'
-           {
-	       $$ = $2;
-	   }
-
-powexpr	: atomexpr
-          {
-	      $$ = $1;
-	  }
-        | atomexpr '^' powexpr
-          {
-	      $$ = new CNPower($1, $3);
-	  }
-
-unaryexpr : powexpr
-            {
-		$$ = $1;
-	    }
-          | '+' powexpr
-            {
-		$$ = $2;
-	    }
-          | '-' powexpr
-            {
-		$$ = new CNNegate($2);
-	    }
-
-mulexpr : unaryexpr
-          {
-	      $$ = $1;
-	  }
-        | mulexpr '*' unaryexpr
-          {
-	      $$ = new CNMultiply($1, $3);
-	  }
-        | mulexpr '/' unaryexpr
-          {
-	      $$ = new CNDivide($1, $3);
-	  }
-        | mulexpr '%' unaryexpr
-          {
-	      $$ = new CNModulo($1, $3);
-	  }
-
-addexpr : mulexpr
-          {
-	      $$ = $1;
-	  }
-        | addexpr '+' mulexpr
-          {
-	      $$ = new CNAdd($1, $3);
-	  }
-        | addexpr '-' mulexpr
-          {
-	      $$ = new CNSubtract($1, $3);
-	  }
-
-expr	: addexpr
-          {
-	      $$ = $1;
-	  }
-
-assignment : STRING '=' expr
-             {
-		 driver.calc.variables[*$1] = $3->evaluate();
-		 std::cout << "Setting variable " << *$1
-			   << " = " << driver.calc.variables[*$1] << "\n";
-		 delete $1;
-		 delete $3;
-	     }
-
-start	: /* empty */
-        | start ';'
-        | start EOL
-	| start assignment ';'
-	| start assignment EOL
-	| start assignment END
-        | start expr ';'
-          {
-	      driver.calc.expressions.push_back($2);
-	  }
-        | start expr EOL
-          {
-	      driver.calc.expressions.push_back($2);
-	  }
-        | start expr END
-          {
-	      driver.calc.expressions.push_back($2);
-	  }
+start	: TECHNIQUE {printf("find tecnique at parser\n");}
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 

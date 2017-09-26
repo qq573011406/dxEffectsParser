@@ -66,12 +66,12 @@ namespace example {
     union semantic_type
     {
 /* Line 33 of lalr1.cc  */
-#line 56 "E:/Repos/dxEffectsParser/src/parser.yy"
+#line 56 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
 
-    int  			integerVal;
-    double 			doubleVal;
     std::string*		stringVal;
-    class CalcNode*		calcnode;
+    class TechniqueNode*		technique;
+	class PassNode*				pass;
+	class StateAssignmentNode*  stateAssignment;
 
 
 /* Line 33 of lalr1.cc  */
@@ -88,10 +88,9 @@ namespace example {
       /* Tokens.  */
    enum yytokentype {
      END = 0,
-     EOL = 258,
-     INTEGER = 259,
-     DOUBLE = 260,
-     STRING = 261
+     IDENTIFIER = 258,
+     TECHNIQUE = 259,
+     PASS = 260
    };
 
     };
@@ -269,7 +268,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 273 "parser.h"
+#line 272 "parser.h"
 
 
 

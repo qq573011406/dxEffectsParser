@@ -38,8 +38,10 @@ endif(WIN32)
 
 
 add_executable(exprtest
+${PROJECT_SOURCE_DIR}/src/expression.h
 ${PROJECT_SOURCE_DIR}/src/parser.cc
 ${PROJECT_SOURCE_DIR}/src/scanner.cc
+${PROJECT_SOURCE_DIR}/src/driver.h
 ${PROJECT_SOURCE_DIR}/src/driver.cc
 ${PROJECT_SOURCE_DIR}/src/exprtest.cc
 )

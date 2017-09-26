@@ -58,16 +58,20 @@ typedef example::Parser::token_type token_type;
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
-"technique" {
-    printf("find technique at scanner\n");
-    return token::TECHNIQUE;
-}
-[A-Za-z][A-Za-z0-9_]* {
-    printf("find identifier at scanner: %s\n",yytext);
-    yylval->stringVal = new std::string(yytext, yyleng);
-    return token::IDENTIFIER;
+[0-9]+ {
+    yylval->integerVal = atoi(yytext);
+    return token::INTEGER;
 }
 
+[0-9]+"."[0-9]* {
+    yylval->doubleVal = atof(yytext);
+    return token::DOUBLE;
+}
+
+[A-Za-z][A-Za-z0-9_,.-]* {
+    yylval->stringVal = new std::string(yytext, yyleng);
+    return token::STRING;
+}
 
  /* gobble up white-spaces */
 [ \t\r]+ {
@@ -76,11 +80,14 @@ typedef example::Parser::token_type token_type;
 
  /* gobble up end-of-lines */
 \n {
-
+    yylloc->lines(yyleng); yylloc->step();
+    return token::EOL;
 }
 
  /* pass all other characters up to bison */
-. {}
+. {
+    return static_cast<token_type>(*yytext);
+}
 
  /*** END EXAMPLE - Change the example lexer rules above ***/
 
