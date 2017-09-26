@@ -62,15 +62,12 @@ typedef example::Parser::token_type token_type;
 "/*"([^*]|"*"[^/])*"*/"  { /* skip comments */ }
 "//"[^\r\n]*             { /* skip comments */ }
 
-"pass" {
-    //printf("token:PASS\n");
-    return token::PASS;
-}
+"pass" {return token::PASS;}
+"technique"     {return token::TECHNIQUE;}
+"VertexShader"  {return token::VERTEXSHADER;}
+"PixelShader"   {return token::PIXELSHADER;}
+"compile"   {return token::COMPILE;}
 
-"technique" {
-    //printf("token:TECHNIQUE\n");
-    return token::TECHNIQUE;
-}
 [_A-Za-z][A-Za-z0-9_]* {
     //printf("token:IDENTIFIER = %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
@@ -81,10 +78,7 @@ typedef example::Parser::token_type token_type;
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::STATENAME;
 }
-\{  {return token::BRACEETS_LEFT;}
-\}  {return token::BRACEETS_RIGHT;}
-"=" {return token::EQUAL;}
-";" {return token::SEMICOLON;}
+
  /* gobble up white-spaces */
 [ \t\r]+ {
     //yylloc->step();
@@ -96,7 +90,9 @@ typedef example::Parser::token_type token_type;
 }
 
  /* pass all other characters up to bison */
-. {}
+.   {
+        return static_cast<token_type>(*yytext);
+    }
 
  /*** END EXAMPLE - Change the example lexer rules above ***/
 

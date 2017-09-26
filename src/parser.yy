@@ -58,6 +58,11 @@
     class TechniqueNode*		technique;
 	class PassNode*				pass;
 	class StateAssignmentNode*  stateAssignment;
+    float                       floatValue;
+    float*                      float2Value;
+    float*                      float3Value;
+    float*                      float4Value;
+    bool                        boolValue;
 }
 
 %token <stringVal> 	IDENTIFIER
@@ -66,16 +71,21 @@
 %token <stringVal>  STATENAME
 %token <stringVal>  STATEVALUE 
 %token				END	     0	"end of file"
-%token BRACEETS_LEFT BRACEETS_RIGHT EQUAL SEMICOLON
 
 /// Beigin Effect States (Direct3D 9)
+//effect state [ [index] ] = expression;
+
 
 /* Light States */
+
 /* Material States */
 /* Pixel Pipe Render States */
 /* Vertex Pipe Render States */
 /* Sampler States */
 /* Shader States */
+%token PIXELSHADER
+%token VERTEXSHADER
+%token COMPILE
 /* Shader Constant States */
 /* Texture States */
 /* Texture Stage States */
@@ -109,17 +119,17 @@
 %% /*** Grammar Rules ***/
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
-stmt_state	:	IDENTIFIER EQUAL IDENTIFIER SEMICOLON {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
-            |   STATENAME EQUAL IDENTIFIER SEMICOLON {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
+stmt_state	: VERTEXSHADER '=' COMPILE IDENTIFIER IDENTIFIER '(' ')' ';' {std::cout<<"vertex shader:"<<*$5<<std::endl;}
+            | PIXELSHADER '=' COMPILE IDENTIFIER IDENTIFIER '(' ')' ';' {std::cout<<"pixel shader:"<<*$5<<std::endl;}
 stmt_state_list :   /* empty */
                 | stmt_state stmt_state_list  {}
 
-stmt_pass	:	PASS IDENTIFIER  BRACEETS_LEFT stmt_state_list BRACEETS_RIGHT {std::cout<<"pass:"<<*$2<<std::endl;}
+stmt_pass	:	PASS IDENTIFIER  '{' stmt_state_list '}' {std::cout<<"pass:"<<*$2<<std::endl;}
 
 stmt_pass_list : stmt_pass {}
                | stmt_pass stmt_pass_list {}
 
-stmt_tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT stmt_pass_list BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
+stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {std::cout<<"technique:"<<*$2<<std::endl;}
 
 stmt_tec_list   :   stmt_tec {}
                 |   stmt_tec stmt_tec_list {}

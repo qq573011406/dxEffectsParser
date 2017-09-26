@@ -72,10 +72,15 @@ namespace example {
     class TechniqueNode*		technique;
 	class PassNode*				pass;
 	class StateAssignmentNode*  stateAssignment;
+    float                       floatValue;
+    float*                      float2Value;
+    float*                      float3Value;
+    float*                      float4Value;
+    bool                        boolValue;
 
 
 /* Line 33 of lalr1.cc  */
-#line 79 "parser.h"
+#line 84 "parser.h"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -93,10 +98,9 @@ namespace example {
      PASS = 260,
      STATENAME = 261,
      STATEVALUE = 262,
-     BRACEETS_LEFT = 263,
-     BRACEETS_RIGHT = 264,
-     EQUAL = 265,
-     SEMICOLON = 266
+     PIXELSHADER = 263,
+     VERTEXSHADER = 264,
+     COMPILE = 265
    };
 
     };
@@ -274,7 +278,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 278 "parser.h"
+#line 282 "parser.h"
 
 
 
