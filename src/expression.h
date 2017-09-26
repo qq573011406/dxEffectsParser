@@ -11,18 +11,110 @@
 #include <cmath>
 
 
+
+enum class StateValueType
+{
+	COMPILE,
+	BOOLEAN,
+	STRING,
+	UNKNOWN,
+};
+
+class StateAssignmentValue
+{
+public:
+
+	StateAssignmentValue(StateValueType vt):
+		m_ValueType(StateValueType::UNKNOWN)
+	{
+
+	}
+	virtual ~StateAssignmentValue()
+	{
+	}
+
+	const StateValueType getValueType() const { return m_ValueType; }
+
+private:
+	StateValueType m_ValueType;
+};
+
+
+class StateCompileValue : StateAssignmentValue
+{
+public:
+	StateCompileValue(StateValueType vt, std::string target, std::string entrypoint) :StateAssignmentValue(vt)
+	{
+		m_Target = target;
+		m_Entrypoint = entrypoint;
+	}
+	~StateCompileValue()override = default;
+
+	const std::string getTarget() const { return m_Target; }
+	const std::string getEntryPoint() const { return m_Entrypoint; }
+
+private:
+	std::string m_Target;
+	std::string m_Entrypoint;
+};
+
+
+class StateBooleanValue : StateAssignmentValue
+{
+public:
+	StateBooleanValue(StateValueType vt, bool value) :StateAssignmentValue(vt)
+	{
+		m_Val = value;
+	}
+	~StateBooleanValue()override = default;
+
+	const bool getValue() const { return m_Val; }
+
+private:
+	bool m_Val;
+};
+
+
+class StateStringValue : StateAssignmentValue
+{
+public:
+	StateStringValue(StateValueType vt, std::string value) :StateStringValue(vt)
+	{
+		m_Val = value;
+	}
+	~StateStringValue()override = default;
+
+	const std::string getValue() const { return m_Val; }
+
+private:
+	std::string m_Val;
+};
+
+
+
+
 class StateAssignmentNode
 {
 public:
-	StateAssignmentNode() {};
-	~StateAssignmentNode() {};
-	std::string getName() { return m_Name; }
-	void setName(const std::string& name) { m_Name = name; }
-	std::string getValue() { return m_Value; }
-	void setValue(const std::string& value) { m_Value = value; }
+	StateAssignmentNode(std::string name, StateAssignmentValue* value,int nameIndex = -1)
+	{
+		m_Name = name;
+		m_Value = value;
+		m_NameIndex = nameIndex;
+	}
+	~StateAssignmentNode() {
+		if (m_Value != nullptr) {
+			delete m_Value;
+			m_Value = nullptr;
+		}
+	};
+	const std::string getName() const { return m_Name; }
+	const StateAssignmentValue* getValue() const { return m_Value; }
+	const int getNameIndex() const { return m_NameIndex; }
 private:
 	std::string m_Name;
-	std::string m_Value;
+	int m_NameIndex;
+	StateAssignmentValue* m_Value;
 };
 
 
@@ -31,17 +123,26 @@ private:
 class PassNode
 {
 public:
-	PassNode() {}
-	~PassNode() {}
-	std::string getName() { return m_Name; }
-	void setName(const std::string name) { m_Name = name; }
+	PassNode(std::string name, std::vector<StateAssignmentNode*> states)
+	{
+		m_Name = name;
+		m_StateAssignments = states;
+	}
+	~PassNode()
+	{
+		for (auto state : m_StateAssignments) {
+			delete state;
+		}
+		m_StateAssignments.clear();
+	}
+	const std::string getName() const { return m_Name; }
 
-	std::vector<StateAssignmentNode> getStateAssignments() { return mStateAssignments; }
-	void AddStateAssignment(const StateAssignmentNode& state) { mStateAssignments.push_back(state); }
+
+	const std::vector<StateAssignmentNode*> getStateAssignments()const { return m_StateAssignments; }
 
 private:
 	std::string m_Name;
-	std::vector<StateAssignmentNode> mStateAssignments;
+	std::vector<StateAssignmentNode*> m_StateAssignments;
 };
 
 
