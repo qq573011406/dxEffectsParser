@@ -64,7 +64,7 @@
 %token <technique> 	TECHNIQUE
 %token <pass> 		PASS 
 %token				END	     0	"end of file"
-
+%token BRACEETS_LEFT BRACEETS_RIGHT
 
 //%type <technique>	technique_stat
 //%type <pass>	pass_stat
@@ -93,7 +93,7 @@
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
 
-tec	:	TECHNIQUE IDENTIFIER '{' {std::cout<<"technique:"<<*$2<<std::endl;}
+tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
 
 start	: tec
 

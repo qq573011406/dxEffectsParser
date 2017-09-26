@@ -67,7 +67,8 @@ typedef example::Parser::token_type token_type;
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::IDENTIFIER;
 }
-
+\{  {return token::BRACEETS_LEFT;}
+\}  {return token::BRACEETS_RIGHT;}
 
  /* gobble up white-spaces */
 [ \t\r]+ {

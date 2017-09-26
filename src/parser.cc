@@ -505,7 +505,7 @@ namespace example {
           case 2:
 /* Line 670 of lalr1.cc  */
 #line 96 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-    {std::cout<<"technique:"<<*(yysemantic_stack_[(3) - (2)].stringVal)<<std::endl;}
+    {std::cout<<"technique:"<<*(yysemantic_stack_[(4) - (2)].stringVal)<<std::endl;}
     break;
 
 
@@ -814,7 +814,7 @@ namespace example {
   const signed char
   Parser::yypact_[] =
   {
-        -4,    -2,    -5,     2,    -3,    -5,    -5
+        -4,    -2,    -5,     2,    -3,    -5,    -1,    -5
   };
 
   /* YYDEFACT[S] -- default reduction number in state S.  Performed when
@@ -823,7 +823,7 @@ namespace example {
   const unsigned char
   Parser::yydefact_[] =
   {
-         0,     0,     3,     0,     0,     1,     2
+         0,     0,     3,     0,     0,     1,     0,     2
   };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -847,14 +847,14 @@ namespace example {
   const unsigned char
   Parser::yytable_[] =
   {
-         1,     4,     5,     6
+         1,     4,     5,     6,     0,     0,     7
   };
 
   /* YYCHECK.  */
-  const unsigned char
+  const signed char
   Parser::yycheck_[] =
   {
-         4,     3,     0,     6
+         4,     3,     0,     6,    -1,    -1,     7
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -862,7 +862,7 @@ namespace example {
   const unsigned char
   Parser::yystos_[] =
   {
-         0,     4,     8,     9,     3,     0,     6
+         0,     4,     9,    10,     3,     0,     6,     7
   };
 
 #if YYDEBUG
@@ -871,7 +871,7 @@ namespace example {
   const unsigned short int
   Parser::yytoken_number_[] =
   {
-         0,   256,   257,   258,   259,   260,   123
+         0,   256,   257,   258,   259,   260,   261,   262
   };
 #endif
 
@@ -879,14 +879,14 @@ namespace example {
   const unsigned char
   Parser::yyr1_[] =
   {
-         0,     7,     8,     9
+         0,     8,     9,    10
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
   const unsigned char
   Parser::yyr2_[] =
   {
-         0,     2,     3,     1
+         0,     2,     4,     1
   };
 
 
@@ -896,7 +896,7 @@ namespace example {
   const Parser::yytname_[] =
   {
     "\"end of file\"", "error", "$undefined", "IDENTIFIER", "TECHNIQUE",
-  "PASS", "'{'", "$accept", "tec", "start", YY_NULL
+  "PASS", "BRACEETS_LEFT", "BRACEETS_RIGHT", "$accept", "tec", "start", YY_NULL
   };
 
 #if YYDEBUG
@@ -904,7 +904,7 @@ namespace example {
   const Parser::rhs_number_type
   Parser::yyrhs_[] =
   {
-         9,     0,    -1,     4,     3,     6,    -1,     8,    -1
+        10,     0,    -1,     4,     3,     6,     7,    -1,     9,    -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -912,7 +912,7 @@ namespace example {
   const unsigned char
   Parser::yyprhs_[] =
   {
-         0,     0,     3,     7
+         0,     0,     3,     8
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
@@ -971,7 +971,7 @@ namespace example {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     6,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -985,7 +985,7 @@ namespace example {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5
+       5,     6,     7
     };
     if ((unsigned int) t <= yyuser_token_number_max_)
       return translate_table[t];
@@ -994,15 +994,15 @@ namespace example {
   }
 
   const int Parser::yyeof_ = 0;
-  const int Parser::yylast_ = 3;
+  const int Parser::yylast_ = 6;
   const int Parser::yynnts_ = 3;
   const int Parser::yyempty_ = -2;
   const int Parser::yyfinal_ = 5;
   const int Parser::yyterror_ = 1;
   const int Parser::yyerrcode_ = 256;
-  const int Parser::yyntokens_ = 7;
+  const int Parser::yyntokens_ = 8;
 
-  const unsigned int Parser::yyuser_token_number_max_ = 260;
+  const unsigned int Parser::yyuser_token_number_max_ = 262;
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
 
