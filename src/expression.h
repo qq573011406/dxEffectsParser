@@ -74,7 +74,14 @@ class DxEffectsTree
 {
 public:
 	DxEffectsTree() {}
-	~DxEffectsTree() {}
+	~DxEffectsTree()
+	{
+		for (auto tec:m_Techniques)
+		{
+			delete tec;
+		}
+		m_Techniques.clear();
+	}
 	const std::vector<TechniqueNode*> getTechiques() const { return m_Techniques; }
 	void AddTechnique(TechniqueNode& technique) { m_Techniques.push_back(&technique); }
 private:
