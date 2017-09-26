@@ -54,12 +54,15 @@ public:
 	~TechniqueNode() {}
 
 	std::string getName() { return m_Name; }
-	void setName(const std::string& name) { m_Name = name; }
-	std::vector<PassNode> getPasses() { return m_PassNodes; }
-	void AddPass(const PassNode& pass) { m_PassNodes.push_back(pass); }
+	void setName(const std::string& name)
+	{
+		m_Name = name;
+	}
+	std::vector<const PassNode*> getPasses() { return m_PassNodes; }
+	void AddPass(const PassNode& pass) { m_PassNodes.push_back(&pass); }
 private:
 	std::string m_Name;
-	std::vector<PassNode> m_PassNodes;
+	std::vector<const PassNode*> m_PassNodes;
 };
 
 
@@ -69,10 +72,10 @@ class DxEffectsTree
 public:
 	DxEffectsTree() {}
 	~DxEffectsTree() {}
-	std::vector<TechniqueNode> getTechiques() { return m_Techniques; }
-	void AddTechnique(const TechniqueNode& technique) { m_Techniques.push_back(technique); }
+	std::vector<const TechniqueNode*> getTechiques() { return m_Techniques; }
+	void AddTechnique(const TechniqueNode& technique) { m_Techniques.push_back(&technique); }
 private:
-	std::vector<TechniqueNode> m_Techniques;
+	std::vector<const TechniqueNode*> m_Techniques;
 };
 
 

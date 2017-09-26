@@ -274,14 +274,14 @@ namespace example {
       case 4: /* TECHNIQUE */
 /* Line 455 of lalr1.cc  */
 #line 101 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-        { delete ((*yyvaluep).technique); };
+        { delete ((*yyvaluep).techniqueValue); };
 /* Line 455 of lalr1.cc  */
 #line 280 "parser.cc"
         break;
       case 5: /* PASS */
 /* Line 455 of lalr1.cc  */
 #line 102 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-        { delete ((*yyvaluep).pass); };
+        { delete ((*yyvaluep).passValue); };
 /* Line 455 of lalr1.cc  */
 #line 287 "parser.cc"
         break;
@@ -541,24 +541,26 @@ namespace example {
   case 9:
 /* Line 670 of lalr1.cc  */
 #line 132 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-    {std::cout<<"technique:"<<*(yysemantic_stack_[(5) - (2)].stringVal)<<std::endl;}
+    {
+                                                                (yyval.techniqueValue)->setName(*(yysemantic_stack_[(5) - (2)].stringVal));
+                                                            }
     break;
 
   case 10:
 /* Line 670 of lalr1.cc  */
-#line 134 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-    {}
+#line 136 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+    {(yysemantic_stack_[(1) - (1)].techniqueValue) = new TechniqueNode();driver.calc.AddTechnique(*(yysemantic_stack_[(1) - (1)].techniqueValue));}
     break;
 
   case 11:
 /* Line 670 of lalr1.cc  */
-#line 135 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 137 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {}
     break;
 
 
 /* Line 670 of lalr1.cc  */
-#line 562 "parser.cc"
+#line 564 "parser.cc"
       default:
         break;
       }
@@ -994,7 +996,7 @@ namespace example {
   Parser::yyrline_[] =
   {
          0,   122,   122,   123,   124,   125,   127,   129,   130,   132,
-     134,   135,   137
+     136,   137,   139
   };
 
   // Print the state stack on the debug stream.
@@ -1083,9 +1085,9 @@ namespace example {
 
 } // example
 /* Line 1141 of lalr1.cc  */
-#line 1087 "parser.cc"
+#line 1089 "parser.cc"
 /* Line 1142 of lalr1.cc  */
-#line 141 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 143 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
  /*** Additional Code ***/
 
 void example::Parser::error(const Parser::location_type& l,

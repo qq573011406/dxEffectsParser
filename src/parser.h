@@ -69,9 +69,9 @@ namespace example {
 #line 56 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
 
     std::string*		stringVal;
-    class TechniqueNode*		technique;
-	class PassNode*				pass;
-	class StateAssignmentNode*  stateAssignment;
+    class TechniqueNode*		techniqueValue;
+	class PassNode*				passValue;
+	class StateAssignmentNode*  stateAssignmentValue;
     float                       floatValue;
     float*                      float2Value;
     float*                      float3Value;

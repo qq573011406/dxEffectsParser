@@ -55,9 +55,9 @@
 
 %union {
     std::string*		stringVal;
-    class TechniqueNode*		technique;
-	class PassNode*				pass;
-	class StateAssignmentNode*  stateAssignment;
+    class TechniqueNode*		techniqueValue;
+	class PassNode*				passValue;
+	class StateAssignmentNode*  stateAssignmentValue;
     float                       floatValue;
     float*                      float2Value;
     float*                      float3Value;
@@ -66,8 +66,8 @@
 }
 
 %token <stringVal> 	IDENTIFIER
-%token <technique> 	TECHNIQUE
-%token <pass> 		PASS
+%token <techniqueValue> 	TECHNIQUE
+%token <passValue> 		PASS
 %token <stringVal>  STATENAME
 %token <stringVal>  STATEVALUE 
 %token				END	     0	"end of file"
@@ -93,7 +93,7 @@
 /* Sampler Stage States */
 /// End Of Effect States (Direct3D 9)
 
-//%type <technique>	technique_stat
+%type <techniqueValue> stmt_tec
 //%type <pass>	pass_stat
 //%type <stateAssignment>	stateassignment_stat
 
@@ -129,9 +129,11 @@ stmt_pass	:	PASS IDENTIFIER  '{' stmt_state_list '}' {std::cout<<"pass:"<<*$2<<s
 stmt_pass_list : stmt_pass {}
                | stmt_pass stmt_pass_list {}
 
-stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {std::cout<<"technique:"<<*$2<<std::endl;}
+stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
+                                                                $$->setName(*$2);
+                                                            }
 
-stmt_tec_list   :   stmt_tec {}
+stmt_tec_list   :   stmt_tec {$1 = new TechniqueNode();driver.calc.AddTechnique(*$1);}
                 |   stmt_tec stmt_tec_list {}
 
 start	:	stmt_tec_list
