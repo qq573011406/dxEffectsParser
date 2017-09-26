@@ -50,19 +50,22 @@ class TechniqueNode
 {
 
 public:
-	TechniqueNode() {}
+	TechniqueNode():
+		m_Name(nullptr)
+	{}
 	~TechniqueNode() {}
 
-	std::string getName() { return m_Name; }
-	void setName(const std::string& name)
+	const std::string* getName() const { return m_Name; }
+	void setName(std::string& name)
 	{
-		m_Name = name;
+		if (m_Name != nullptr) delete m_Name;
+		m_Name = &name;
 	}
-	std::vector<const PassNode*> getPasses() { return m_PassNodes; }
-	void AddPass(const PassNode& pass) { m_PassNodes.push_back(&pass); }
+	std::vector<PassNode*> getPasses() const { return m_PassNodes; }
+	void AddPass(PassNode& pass) { m_PassNodes.push_back(&pass); }
 private:
-	std::string m_Name;
-	std::vector<const PassNode*> m_PassNodes;
+	std::string* m_Name;
+	std::vector<PassNode*> m_PassNodes;
 };
 
 
@@ -72,10 +75,10 @@ class DxEffectsTree
 public:
 	DxEffectsTree() {}
 	~DxEffectsTree() {}
-	std::vector<const TechniqueNode*> getTechiques() { return m_Techniques; }
-	void AddTechnique(const TechniqueNode& technique) { m_Techniques.push_back(&technique); }
+	const std::vector<TechniqueNode*> getTechiques() const { return m_Techniques; }
+	void AddTechnique(TechniqueNode& technique) { m_Techniques.push_back(&technique); }
 private:
-	std::vector<const TechniqueNode*> m_Techniques;
+	std::vector<TechniqueNode*> m_Techniques;
 };
 
 

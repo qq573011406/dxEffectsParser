@@ -130,10 +130,12 @@ stmt_pass_list : stmt_pass {}
                | stmt_pass stmt_pass_list {}
 
 stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
+                                                                $$ = new TechniqueNode();
                                                                 $$->setName(*$2);
+                                                                driver.calc.AddTechnique(*$$);
                                                             }
 
-stmt_tec_list   :   stmt_tec {$1 = new TechniqueNode();driver.calc.AddTechnique(*$1);}
+stmt_tec_list   :   stmt_tec {}
                 |   stmt_tec stmt_tec_list {}
 
 start	:	stmt_tec_list

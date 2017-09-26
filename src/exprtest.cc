@@ -36,15 +36,11 @@ int main(int argc, char *argv[])
 	    if (result)
 		{
 			std::cout << "Expressions:" << std::endl;
-			//for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
-			//{
-			//	std::cout << "[" << ei << "]:" << std::endl;
-			//	std::cout << "tree:" << std::endl;
-			//	calc.expressions[ei]->print(std::cout);
-			//	std::cout << "evaluated: "
-			//		<< calc.expressions[ei]->evaluate()
-			//		<< std::endl;
-			//}
+			auto techiques = calc.getTechiques();
+			for (unsigned int ei = 0; ei < techiques.size(); ++ei)
+			{
+				std::cout << "Technique " << *(techiques[ei]->getName()) << std::endl;
+			}
 		}
 		std::system("pause");
 	    readfile = true;

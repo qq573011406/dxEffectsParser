@@ -542,25 +542,27 @@ namespace example {
 /* Line 670 of lalr1.cc  */
 #line 132 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
+                                                                (yyval.techniqueValue) = new TechniqueNode();
                                                                 (yyval.techniqueValue)->setName(*(yysemantic_stack_[(5) - (2)].stringVal));
+                                                                driver.calc.AddTechnique(*(yyval.techniqueValue));
                                                             }
     break;
 
   case 10:
 /* Line 670 of lalr1.cc  */
-#line 136 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
-    {(yysemantic_stack_[(1) - (1)].techniqueValue) = new TechniqueNode();driver.calc.AddTechnique(*(yysemantic_stack_[(1) - (1)].techniqueValue));}
+#line 138 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+    {}
     break;
 
   case 11:
 /* Line 670 of lalr1.cc  */
-#line 137 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 139 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {}
     break;
 
 
 /* Line 670 of lalr1.cc  */
-#line 564 "parser.cc"
+#line 566 "parser.cc"
       default:
         break;
       }
@@ -996,7 +998,7 @@ namespace example {
   Parser::yyrline_[] =
   {
          0,   122,   122,   123,   124,   125,   127,   129,   130,   132,
-     136,   137,   139
+     138,   139,   141
   };
 
   // Print the state stack on the debug stream.
@@ -1085,9 +1087,9 @@ namespace example {
 
 } // example
 /* Line 1141 of lalr1.cc  */
-#line 1089 "parser.cc"
+#line 1091 "parser.cc"
 /* Line 1142 of lalr1.cc  */
-#line 143 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 145 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
  /*** Additional Code ***/
 
 void example::Parser::error(const Parser::location_type& l,
