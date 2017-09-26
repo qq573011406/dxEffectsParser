@@ -65,6 +65,7 @@
 %token <pass> 		PASS 
 %token				END	     0	"end of file"
 
+
 //%type <technique>	technique_stat
 //%type <pass>	pass_stat
 //%type <stateAssignment>	stateassignment_stat
@@ -92,7 +93,9 @@
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
 
-start	: TECHNIQUE {printf("find tecnique at parser\n");}
+tec	:	TECHNIQUE IDENTIFIER '{' {std::cout<<"technique:"<<*$2<<std::endl;}
+
+start	: tec
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 

@@ -411,7 +411,7 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    5,    5,    5,    5,    5,    5,
         5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
         5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
-        1,    1,    1,    1,    4,    1,    5,    5,    6,    5,
+        1,    1,    1,    1,    5,    1,    5,    5,    6,    5,
 
         7,    5,    5,    8,    9,    5,    5,    5,    5,   10,
         5,    5,   11,    5,    5,   12,   13,    5,    5,    5,
@@ -818,7 +818,7 @@ case 3:
 YY_RULE_SETUP
 #line 74 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {
-    yylloc->step();
+    //yylloc->step();
 }
 	YY_BREAK
 /* gobble up end-of-lines */

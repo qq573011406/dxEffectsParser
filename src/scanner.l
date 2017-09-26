@@ -62,7 +62,7 @@ typedef example::Parser::token_type token_type;
     printf("find technique at scanner\n");
     return token::TECHNIQUE;
 }
-[A-Za-z][A-Za-z0-9_]* {
+[_A-Za-z][A-Za-z0-9_]* {
     printf("find identifier at scanner: %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::IDENTIFIER;
@@ -71,7 +71,7 @@ typedef example::Parser::token_type token_type;
 
  /* gobble up white-spaces */
 [ \t\r]+ {
-    yylloc->step();
+    //yylloc->step();
 }
 
  /* gobble up end-of-lines */
