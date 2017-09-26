@@ -44,6 +44,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 #include "stack.hh"
 #include "location.hh"
 
@@ -55,7 +56,7 @@
 
 namespace example {
 /* Line 33 of lalr1.cc  */
-#line 59 "parser.h"
+#line 60 "parser.h"
 
   /// A Bison parser.
   class Parser
@@ -66,21 +67,24 @@ namespace example {
     union semantic_type
     {
 /* Line 33 of lalr1.cc  */
-#line 56 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 59 "E:/Repos/dxEffectsParser/src/parser.yy"
 
-    std::string*		stringVal;
-    class TechniqueNode*		techniqueValue;
-	class PassNode*				passValue;
-	class StateAssignmentNode*  stateAssignmentValue;
-    float                       floatValue;
-    float*                      float2Value;
-    float*                      float3Value;
-    float*                      float4Value;
-    bool                        boolValue;
+	typedef std::string					_str;
+	typedef class TechniqueNode		_techNode;
+	typedef class PassNode				_passNode;
+	typedef std::vector<_passNode*>		_passNodes;
+	typedef class StateAssignmentNode	_stateAssignmentNode;
+
+    _str				  *stringVal;
+    _techNode			  *techValue;
+	_passNode			  *passValue;
+	_passNodes			  *passValues;
+	_stateAssignmentNode  *stateAssignmentValue;
+
 
 
 /* Line 33 of lalr1.cc  */
-#line 84 "parser.h"
+#line 88 "parser.h"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -93,9 +97,9 @@ namespace example {
       /* Tokens.  */
    enum yytokentype {
      END = 0,
-     IDENTIFIER = 258,
+     PASS = 258,
      TECHNIQUE = 259,
-     PASS = 260,
+     IDENTIFIER = 260,
      STATENAME = 261,
      STATEVALUE = 262,
      PIXELSHADER = 263,
@@ -278,7 +282,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 282 "parser.h"
+#line 286 "parser.h"
 
 
 

@@ -3,11 +3,14 @@
 
 %{ /*** C/C++ Declarations ***/
 
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include <vector>
 
 #include "expression.h"
+
+class TechniqueNode;
+
 
 %}
 
@@ -54,23 +57,29 @@
  /*** BEGIN EXAMPLE - Change the example grammar's tokens below ***/
 
 %union {
-    std::string*		stringVal;
-    class TechniqueNode*		techniqueValue;
-	class PassNode*				passValue;
-	class StateAssignmentNode*  stateAssignmentValue;
-    float                       floatValue;
-    float*                      float2Value;
-    float*                      float3Value;
-    float*                      float4Value;
-    bool                        boolValue;
-}
+	typedef std::string					_str;
+	typedef class TechniqueNode		_techNode;
+	typedef class PassNode				_passNode;
+	typedef std::vector<_passNode*>		_passNodes;
+	typedef class StateAssignmentNode	_stateAssignmentNode;
 
+    _str				  *stringVal;
+    _techNode			  *techValue;
+	_passNode			  *passValue;
+	_passNodes			  *passValues;
+	_stateAssignmentNode  *stateAssignmentValue;
+
+}
+%token PASS
+%token TECHNIQUE
 %token <stringVal> 	IDENTIFIER
-%token <techniqueValue> 	TECHNIQUE
-%token <passValue> 		PASS
 %token <stringVal>  STATENAME
 %token <stringVal>  STATEVALUE 
 %token				END	     0	"end of file"
+
+
+
+
 
 /// Beigin Effect States (Direct3D 9)
 //effect state [ [index] ] = expression;
@@ -93,13 +102,15 @@
 /* Sampler Stage States */
 /// End Of Effect States (Direct3D 9)
 
-%type <techniqueValue> stmt_tec
-//%type <pass>	pass_stat
-//%type <stateAssignment>	stateassignment_stat
+
+%type <techValue>  stmt_tec
+%type <passValue>  stmt_pass
+%type <passValues> stmt_pass_list
+
 
 %destructor { delete $$; } IDENTIFIER
-%destructor { delete $$; } TECHNIQUE
-%destructor { delete $$; } PASS
+%destructor { delete $$; } stmt_tec
+%destructor { delete $$; } stmt_pass
 
  /*** END EXAMPLE - Change the example grammar's tokens above ***/
 
@@ -124,14 +135,23 @@ stmt_state	: VERTEXSHADER '=' COMPILE IDENTIFIER IDENTIFIER '(' ')' ';' {std::co
 stmt_state_list :   /* empty */
                 | stmt_state stmt_state_list  {}
 
-stmt_pass	:	PASS IDENTIFIER  '{' stmt_state_list '}' {std::cout<<"pass:"<<*$2<<std::endl;}
+stmt_pass	:	PASS IDENTIFIER  '{' stmt_state_list '}' {$$ = new PassNode();$$->setName(*$2);delete $2;}
 
-stmt_pass_list : stmt_pass {}
-               | stmt_pass stmt_pass_list {}
+stmt_pass_list : stmt_pass {$$ = new std::vector<PassNode*>();$$->push_back($1);}
+               | stmt_pass stmt_pass_list {
+											$$ = new std::vector<PassNode*>();
+											$$->push_back($1);
+											$$->insert($$->end(),$2->begin(),$2->end());
+											delete $2;
+										   }
 
 stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
                                                                 $$ = new TechniqueNode();
                                                                 $$->setName(*$2);
+																delete $2;
+																std::vector<PassNode*> list = *($4);
+                                                                for(auto node : list){$$->AddPass(*node);}
+                                                                delete $4;
                                                                 driver.calc.AddTechnique(*$$);
                                                             }
 

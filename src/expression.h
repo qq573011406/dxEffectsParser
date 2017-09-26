@@ -34,7 +34,7 @@ public:
 	PassNode() {}
 	~PassNode() {}
 	std::string getName() { return m_Name; }
-	void setName(const std::string& name) { m_Name = name; }
+	void setName(const std::string name) { m_Name = name; }
 
 	std::vector<StateAssignmentNode> getStateAssignments() { return mStateAssignments; }
 	void AddStateAssignment(const StateAssignmentNode& state) { mStateAssignments.push_back(state); }
@@ -50,21 +50,24 @@ class TechniqueNode
 {
 
 public:
-	TechniqueNode():
-		m_Name(nullptr)
-	{}
-	~TechniqueNode() {}
-
-	const std::string* getName() const { return m_Name; }
-	void setName(std::string& name)
+	TechniqueNode(){}
+	~TechniqueNode()
 	{
-		if (m_Name != nullptr) delete m_Name;
-		m_Name = &name;
+		for (auto passNode : m_PassNodes) {
+			delete passNode;
+		}
+		m_PassNodes.clear();
+	}
+
+	const std::string getName() const { return m_Name; }
+	void setName(std::string name)
+	{
+		m_Name = name;
 	}
 	std::vector<PassNode*> getPasses() const { return m_PassNodes; }
 	void AddPass(PassNode& pass) { m_PassNodes.push_back(&pass); }
 private:
-	std::string* m_Name;
+	std::string m_Name;
 	std::vector<PassNode*> m_PassNodes;
 };
 

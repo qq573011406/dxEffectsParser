@@ -523,10 +523,10 @@ static const flex_int16_t yy_rule_linenum[13] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 1 "E:/Repos/dxEffectsParser/src/scanner.l"
 /* $Id$ -*- mode: c++ -*- */
 /** \file scanner.ll Define the example Flex lexical scanner */
-#line 5 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 5 "E:/Repos/dxEffectsParser/src/scanner.l"
 
 #include <string>
 
@@ -555,7 +555,7 @@ typedef example::Parser::token_type token_type;
 /* enables the use of start condition stacks */
 /* The following paragraph suffices to track locations accurately. Each time
  * yylex is invoked, the begin position is moved onto the end position. */
-#line 49 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 49 "E:/Repos/dxEffectsParser/src/scanner.l"
 #define YY_USER_ACTION  yylloc->columns(yyleng);
 #line 560 "scanner.cc"
 #line 561 "scanner.cc"
@@ -750,10 +750,10 @@ YY_DECL
 
 	{
 /* %% [7.0] user's declarations go here */
-#line 52 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 52 "E:/Repos/dxEffectsParser/src/scanner.l"
 
 
-#line 55 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 55 "E:/Repos/dxEffectsParser/src/scanner.l"
  /* code to place at the beginning of yylex() */
 
     // reset location
@@ -840,42 +840,42 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 63 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 63 "E:/Repos/dxEffectsParser/src/scanner.l"
 { /* skip comments */ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 64 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 64 "E:/Repos/dxEffectsParser/src/scanner.l"
 { /* skip comments */ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 66 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 66 "E:/Repos/dxEffectsParser/src/scanner.l"
 {return token::PASS;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 67 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 67 "E:/Repos/dxEffectsParser/src/scanner.l"
 {return token::TECHNIQUE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 68 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 68 "E:/Repos/dxEffectsParser/src/scanner.l"
 {return token::VERTEXSHADER;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 69 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 69 "E:/Repos/dxEffectsParser/src/scanner.l"
 {return token::PIXELSHADER;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 70 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 70 "E:/Repos/dxEffectsParser/src/scanner.l"
 {return token::COMPILE;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 72 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 72 "E:/Repos/dxEffectsParser/src/scanner.l"
 {
     //printf("token:IDENTIFIER = %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
@@ -884,7 +884,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 77 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 77 "E:/Repos/dxEffectsParser/src/scanner.l"
 {
     //printf("token:STATENAME = %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
@@ -894,7 +894,7 @@ YY_RULE_SETUP
 /* gobble up white-spaces */
 case 10:
 YY_RULE_SETUP
-#line 84 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 84 "E:/Repos/dxEffectsParser/src/scanner.l"
 {
     //yylloc->step();
 }
@@ -903,7 +903,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 89 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 89 "E:/Repos/dxEffectsParser/src/scanner.l"
 {
 
 }
@@ -911,7 +911,7 @@ YY_RULE_SETUP
 /* pass all other characters up to bison */
 case 12:
 YY_RULE_SETUP
-#line 94 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 94 "E:/Repos/dxEffectsParser/src/scanner.l"
 {
         return static_cast<token_type>(*yytext);
     }
@@ -919,7 +919,7 @@ YY_RULE_SETUP
 /*** END EXAMPLE - Change the example lexer rules above ***/
 case 13:
 YY_RULE_SETUP
-#line 100 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 100 "E:/Repos/dxEffectsParser/src/scanner.l"
 ECHO;
 	YY_BREAK
 #line 925 "scanner.cc"
@@ -2033,7 +2033,7 @@ void Examplefree (void * ptr )
 
 /* %ok-for-header */
 
-#line 100 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 100 "E:/Repos/dxEffectsParser/src/scanner.l"
 
 
 namespace example {

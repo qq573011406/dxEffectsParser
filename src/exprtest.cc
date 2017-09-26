@@ -35,40 +35,20 @@ int main(int argc, char *argv[])
 	    bool result = driver.parse_stream(infile, argv[ai]);
 	    if (result)
 		{
-			std::cout << "Expressions:" << std::endl;
+			std::cout << "Techniques:" << std::endl;
 			auto techiques = calc.getTechiques();
 			for (unsigned int ei = 0; ei < techiques.size(); ++ei)
 			{
-				std::cout << "Technique " << *(techiques[ei]->getName()) << std::endl;
+				std::cout << "Technique " << techiques[ei]->getName() << std::endl;
+				auto passes = techiques[ei]->getPasses();
+				for (unsigned int pi =0;pi<passes.size();pi++)
+				{
+					std::cout << "\tPass " << (passes[pi]->getName()) << std::endl;
+				}
 			}
 		}
 		std::system("pause");
 	    readfile = true;
-	}
-    }
-
-    if (readfile) return 0;
-    
-    std::cout << "Reading expressions from stdin" << std::endl;
-
-    std::string line;
-    while( std::cout << "input: " &&
-	   std::getline(std::cin, line) &&
-	   !line.empty() )
-    {
-	//calc.clearExpressions();
-	bool result = driver.parse_string(line, "input");
-
-	if (result)
-	{
-		//for (unsigned int ei = 0; ei < calc.expressions.size(); ++ei)
-		//{
-		//	std::cout << "tree:" << std::endl;
-		//	calc.expressions[ei]->print(std::cout);
-		//	std::cout << "evaluated: "
-		//		<< calc.expressions[ei]->evaluate()
-		//		<< std::endl;
-		//}
 	}
     }
 }

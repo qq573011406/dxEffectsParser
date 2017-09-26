@@ -48,6 +48,7 @@ b4_copyright([Skeleton interface for Bison LALR(1) parsers in C++],
 
 #include <string>
 #include <iostream>
+#include <vector>
 #include "stack.hh"
 ]b4_percent_define_ifdef([[api.location.type]], [],
                          [[#include "location.hh"]])[

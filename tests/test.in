@@ -25,4 +25,10 @@ technique OcclusionTest_vs10_ps10
 		//AlphaArg1[0] = Diffuse;
 		//AlphaOp[1] = Disable;
 	}
+
+	pass P1
+	{
+		VertexShader = compile vs_2_0 vertexShader2();
+		PixelShader  = compile ps_2_0 pixelShader2();
+	}
 }
