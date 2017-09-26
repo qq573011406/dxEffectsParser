@@ -42,6 +42,9 @@ typedef example::Parser::token_type token_type;
 /* enables the use of start condition stacks */
 %option stack
 
+%x C_COMMENT
+%x START_STATE_TECHNIQUE
+
 /* The following paragraph suffices to track locations accurately. Each time
  * yylex is invoked, the begin position is moved onto the end position. */
 %{
@@ -58,6 +61,17 @@ typedef example::Parser::token_type token_type;
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
+"/*"            { BEGIN(C_COMMENT); }
+<C_COMMENT>"*/" { BEGIN(INITIAL); }
+<C_COMMENT>\n   { }
+<C_COMMENT>.    { }
+"//"[^\r\n]*             { /* skip comments */ }
+
+"pass" {
+    printf("find pass at scanner\n");
+    return token::PASS;
+}
+
 "technique" {
     printf("find technique at scanner\n");
     return token::TECHNIQUE;
@@ -67,9 +81,15 @@ typedef example::Parser::token_type token_type;
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::IDENTIFIER;
 }
+[_A-Za-z][A-Za-z0-9_]*(\[[0-9]+\])* {
+    printf("find statename at scanner: %s\n",yytext);
+    yylval->stringVal = new std::string(yytext, yyleng);
+    return token::STATENAME;
+}
 \{  {return token::BRACEETS_LEFT;}
 \}  {return token::BRACEETS_RIGHT;}
-
+"=" {return token::EQUAL;}
+"//"[^\r\n]*             { /* skip comments */ }
  /* gobble up white-spaces */
 [ \t\r]+ {
     //yylloc->step();

@@ -62,9 +62,11 @@
 
 %token <stringVal> 	IDENTIFIER
 %token <technique> 	TECHNIQUE
-%token <pass> 		PASS 
+%token <pass> 		PASS
+%token <stringVal>  STATENAME
+%token <stringVal>  STATEVALUE 
 %token				END	     0	"end of file"
-%token BRACEETS_LEFT BRACEETS_RIGHT
+%token BRACEETS_LEFT BRACEETS_RIGHT EQUAL
 
 //%type <technique>	technique_stat
 //%type <pass>	pass_stat
@@ -92,10 +94,13 @@
 %% /*** Grammar Rules ***/
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
+stmt_state	:	IDENTIFIER EQUAL IDENTIFIER {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
 
-tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
+stmt_pass	:	PASS IDENTIFIER  BRACEETS_LEFT stmt_state BRACEETS_RIGHT {std::cout<<"pass:"<<*$2<<std::endl;}
 
-start	: tec
+stmt_tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT stmt_pass BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
+
+start	:	stmt_tec
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 

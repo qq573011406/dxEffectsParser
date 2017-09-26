@@ -385,8 +385,8 @@ typedef flex_uint8_t YY_CHAR;
 /* %% [3.0] code to copy yytext_ptr to yytext[] goes here, if %array \ */\
 	(yy_c_buf_p) = yy_cp;
 /* %% [4.0] data tables for the DFA and the user's section 1 definitions go here */
-#define YY_NUM_RULES 8
-#define YY_END_OF_BUFFER 9
+#define YY_NUM_RULES 17
+#define YY_END_OF_BUFFER 18
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -394,29 +394,31 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[22] =
+static const flex_int16_t yy_accept[43] =
     {   0,
-        0,    0,    9,    7,    5,    6,    2,    2,    3,    4,
-        5,    2,    2,    2,    2,    2,    2,    2,    2,    1,
-        0
+        0,    0,    0,    0,    0,    0,   18,   16,   14,   15,
+       16,   12,    8,    8,    8,   10,   11,    4,    3,    4,
+       17,   14,    1,    5,    8,    0,    8,    8,    2,    5,
+        0,    8,    8,    9,    6,    8,    8,    8,    8,    8,
+        7,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    4,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
-        1,    1,    1,    1,    5,    5,    5,    5,    5,    5,
-        5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
-        5,    5,    5,    5,    5,    5,    5,    5,    5,    5,
-        1,    1,    1,    1,    5,    1,    5,    5,    6,    5,
+        1,    5,    1,    1,    1,    1,    6,    7,    7,    7,
+        7,    7,    7,    7,    7,    7,    7,    1,    1,    1,
+        8,    1,    1,    1,    9,    9,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
+       10,    1,   11,    1,    9,    1,   12,    9,   13,    9,
 
-        7,    5,    5,    8,    9,    5,    5,    5,    5,   10,
-        5,    5,   11,    5,    5,   12,   13,    5,    5,    5,
-        5,    5,   14,    1,   15,    1,    1,    1,    1,    1,
+       14,    9,    9,   15,   16,    9,    9,    9,    9,   17,
+        9,   18,   19,    9,   20,   21,   22,    9,    9,    9,
+        9,    9,   23,    1,   24,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -433,47 +435,65 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[16] =
+static const YY_CHAR yy_meta[25] =
     {   0,
-        1,    1,    1,    2,    2,    2,    2,    2,    2,    2,
-        2,    2,    2,    1,    1
+        1,    1,    2,    2,    1,    1,    3,    1,    3,    3,
+        1,    3,    3,    3,    3,    3,    3,    3,    3,    3,
+        3,    3,    1,    1
     } ;
 
-static const flex_int16_t yy_base[23] =
+static const flex_int16_t yy_base[47] =
     {   0,
-        0,    0,   27,   28,   24,   28,    0,   18,   28,   28,
-       22,    0,   17,   14,   11,   11,    8,    5,   10,    0,
-       28,   14
+        0,    0,   22,   23,    0,    0,   75,   76,   27,   76,
+       27,   76,   64,   24,   25,   76,   76,   76,   76,   66,
+       76,   36,   76,    0,   53,   55,   27,   31,   76,    0,
+       35,   33,   35,   51,   49,   38,   41,   39,   42,   46,
+       44,   76,   64,   67,   27,   70
     } ;
 
-static const flex_int16_t yy_def[23] =
+static const flex_int16_t yy_def[47] =
     {   0,
-       21,    1,   21,   21,   21,   21,   22,   22,   21,   21,
-       21,   22,   22,   22,   22,   22,   22,   22,   22,   22,
-        0,   21
+       42,    1,   43,   43,   44,   44,   42,   42,   42,   42,
+       42,   42,   45,   45,   45,   42,   42,   42,   42,   42,
+       42,   42,   42,   46,   45,   42,   45,   45,   42,   46,
+       42,   45,   45,   42,   45,   45,   45,   45,   45,   45,
+       45,    0,   42,   42,   42,   42
     } ;
 
-static const flex_int16_t yy_nxt[44] =
+static const flex_int16_t yy_nxt[101] =
     {   0,
-        4,    5,    6,    4,    7,    7,    7,    7,    7,    7,
-        7,    8,    7,    9,   10,   12,   20,   19,   18,   17,
-       16,   15,   14,   11,   13,   11,   21,    3,   21,   21,
-       21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
-       21,   21,   21
+        8,    9,   10,    9,    8,   11,    8,   12,   13,    8,
+        8,   13,   13,   13,   13,   13,   13,   14,   13,   13,
+       15,   13,   16,   17,   19,   19,   20,   20,   22,   25,
+       22,   23,   24,   26,   26,   27,   26,   22,   28,   22,
+       26,   31,   26,   33,   26,   34,   32,   26,   26,   36,
+       26,   26,   35,   26,   37,   26,   38,   39,   26,   41,
+       26,   31,   26,   40,   18,   18,   18,   21,   21,   21,
+       30,   29,   30,   26,   42,    7,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   42,   42,   42,   42
+
     } ;
 
-static const flex_int16_t yy_chk[44] =
+static const flex_int16_t yy_chk[101] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,   22,   19,   18,   17,   16,
-       15,   14,   13,   11,    8,    5,    3,   21,   21,   21,
-       21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
-       21,   21,   21
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    3,    4,    3,    4,    9,   45,
+        9,   11,   11,   14,   15,   14,   27,   22,   15,   22,
+       28,   31,   32,   28,   33,   31,   27,   36,   38,   33,
+       37,   39,   32,   41,   36,   40,   37,   38,   35,   40,
+       34,   26,   25,   39,   43,   43,   43,   44,   44,   44,
+       46,   20,   46,   13,    7,   42,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   42,   42,   42,   42
+
     } ;
 
-static const flex_int16_t yy_rule_linenum[8] =
+static const flex_int16_t yy_rule_linenum[17] =
     {   0,
-       62,   66,   71,   72,   75,   80,   85
+       65,   66,   67,   68,   69,   71,   76,   80,   85,   90,
+       91,   92,   93,   95,  100,  105
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -504,7 +524,7 @@ typedef example::Parser::token_type token_type;
  * on Win32. The C++ scanner uses STL streams instead. */
 #define YY_NO_UNISTD_H
 
-#line 507 "scanner.cc"
+#line 527 "scanner.cc"
 /*** Flex Declarations and Options ***/
 /* enable c++ scanner class generation */
 /* change the name of the scanner class. results in "ExampleFlexLexer" */
@@ -513,14 +533,17 @@ typedef example::Parser::token_type token_type;
  * versions. */
 /* no support for include files is planned */
 /* enables the use of start condition stacks */
+
 /* The following paragraph suffices to track locations accurately. Each time
  * yylex is invoked, the begin position is moved onto the end position. */
-#line 48 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 51 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 #define YY_USER_ACTION  yylloc->columns(yyleng);
-#line 520 "scanner.cc"
-#line 521 "scanner.cc"
+#line 541 "scanner.cc"
+#line 542 "scanner.cc"
 
 #define INITIAL 0
+#define C_COMMENT 1
+#define START_STATE_TECHNIQUE 2
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -710,10 +733,10 @@ YY_DECL
 
 	{
 /* %% [7.0] user's declarations go here */
-#line 51 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
-
-
 #line 54 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+
+
+#line 57 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
  /* code to place at the beginning of yylex() */
 
     // reset location
@@ -722,7 +745,7 @@ YY_DECL
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
-#line 725 "scanner.cc"
+#line 748 "scanner.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -751,13 +774,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 22 )
+				if ( yy_current_state >= 43 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_current_state != 21 );
+		while ( yy_current_state != 42 );
 		yy_cp = (yy_last_accepting_cpos);
 		yy_current_state = (yy_last_accepting_state);
 
@@ -776,12 +799,12 @@ do_action:	/* This label is used only to access EOF actions. */
 			{
 			if ( yy_act == 0 )
 				std::cerr << "--scanner backing up\n";
-			else if ( yy_act < 8 )
+			else if ( yy_act < 17 )
 				std::cerr << "--accepting rule at line " << yy_rule_linenum[yy_act] <<
 				         "(\"" << yytext << "\")\n";
-			else if ( yy_act == 8 )
+			else if ( yy_act == 17 )
 				std::cerr << "--accepting default rule (\"" << yytext << "\")\n";
-			else if ( yy_act == 9 )
+			else if ( yy_act == 18 )
 				std::cerr << "--(end of buffer or a NUL)\n";
 			else
 				std::cerr << "--EOF (start condition " << YY_START << ")\n";
@@ -799,62 +822,117 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 62 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 65 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ BEGIN(C_COMMENT); }
+	YY_BREAK
+case 2:
+YY_RULE_SETUP
+#line 66 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ BEGIN(INITIAL); }
+	YY_BREAK
+case 3:
+/* rule 3 can match eol */
+YY_RULE_SETUP
+#line 67 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ }
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 68 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ }
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 69 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ /* skip comments */ }
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 71 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{
+    printf("find pass at scanner\n");
+    return token::PASS;
+}
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 76 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {
     printf("find technique at scanner\n");
     return token::TECHNIQUE;
 }
 	YY_BREAK
-case 2:
+case 8:
 YY_RULE_SETUP
-#line 66 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 80 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {
     printf("find identifier at scanner: %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::IDENTIFIER;
 }
 	YY_BREAK
-case 3:
+case 9:
 YY_RULE_SETUP
-#line 71 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 85 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{
+    printf("find statename at scanner: %s\n",yytext);
+    yylval->stringVal = new std::string(yytext, yyleng);
+    return token::STATENAME;
+}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 90 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {return token::BRACEETS_LEFT;}
 	YY_BREAK
-case 4:
+case 11:
 YY_RULE_SETUP
-#line 72 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 91 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {return token::BRACEETS_RIGHT;}
 	YY_BREAK
-/* gobble up white-spaces */
-case 5:
+case 12:
 YY_RULE_SETUP
-#line 75 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 92 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{return token::EQUAL;}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 93 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+{ /* skip comments */ }
+	YY_BREAK
+/* gobble up white-spaces */
+case 14:
+YY_RULE_SETUP
+#line 95 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {
     //yylloc->step();
 }
 	YY_BREAK
 /* gobble up end-of-lines */
-case 6:
-/* rule 6 can match eol */
+case 15:
+/* rule 15 can match eol */
 YY_RULE_SETUP
-#line 80 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 100 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {
 
 }
 	YY_BREAK
 /* pass all other characters up to bison */
-case 7:
+case 16:
 YY_RULE_SETUP
-#line 85 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 105 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 {}
 	YY_BREAK
 /*** END EXAMPLE - Change the example lexer rules above ***/
-case 8:
+case 17:
 YY_RULE_SETUP
-#line 89 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 109 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 ECHO;
 	YY_BREAK
-#line 856 "scanner.cc"
+#line 932 "scanner.cc"
 case YY_STATE_EOF(INITIAL):
+case YY_STATE_EOF(C_COMMENT):
+case YY_STATE_EOF(START_STATE_TECHNIQUE):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1289,7 +1367,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 22 )
+			if ( yy_current_state >= 43 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1322,11 +1400,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 22 )
+		if ( yy_current_state >= 43 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 21);
+	yy_is_jam = (yy_current_state == 42);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1964,7 +2042,7 @@ void Examplefree (void * ptr )
 
 /* %ok-for-header */
 
-#line 89 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
+#line 109 "E:/Source/GitRepos/dxEffectsParser/src/scanner.l"
 
 
 namespace example {

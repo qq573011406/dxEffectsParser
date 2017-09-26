@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	{
 	    // read a file with expressions
 
-	    std::fstream infile(argv[ai]);
+		std::fstream infile(argv[ai]);
 	    if (!infile.good())
 	    {
 		std::cerr << "Could not open file: " << argv[ai] << std::endl;
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 			//		<< std::endl;
 			//}
 		}
-
+		std::system("pause");
 	    readfile = true;
 	}
     }

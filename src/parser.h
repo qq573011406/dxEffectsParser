@@ -91,8 +91,11 @@ namespace example {
      IDENTIFIER = 258,
      TECHNIQUE = 259,
      PASS = 260,
-     BRACEETS_LEFT = 261,
-     BRACEETS_RIGHT = 262
+     STATENAME = 261,
+     STATEVALUE = 262,
+     BRACEETS_LEFT = 263,
+     BRACEETS_RIGHT = 264,
+     EQUAL = 265
    };
 
     };
@@ -270,7 +273,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 274 "parser.h"
+#line 277 "parser.h"
 
 
 
