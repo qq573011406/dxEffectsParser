@@ -68,6 +68,21 @@
 %token				END	     0	"end of file"
 %token BRACEETS_LEFT BRACEETS_RIGHT EQUAL SEMICOLON
 
+/// Beigin Effect States (Direct3D 9)
+
+/* Light States */
+/* Material States */
+/* Pixel Pipe Render States */
+/* Vertex Pipe Render States */
+/* Sampler States */
+/* Shader States */
+/* Shader Constant States */
+/* Texture States */
+/* Texture Stage States */
+/* Transform States */
+/* Sampler Stage States */
+/// End Of Effect States (Direct3D 9)
+
 //%type <technique>	technique_stat
 //%type <pass>	pass_stat
 //%type <stateAssignment>	stateassignment_stat
