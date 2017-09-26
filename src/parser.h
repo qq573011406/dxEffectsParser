@@ -95,7 +95,8 @@ namespace example {
      STATEVALUE = 262,
      BRACEETS_LEFT = 263,
      BRACEETS_RIGHT = 264,
-     EQUAL = 265
+     EQUAL = 265,
+     SEMICOLON = 266
    };
 
     };
@@ -273,7 +274,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 277 "parser.h"
+#line 278 "parser.h"
 
 
 

@@ -1,4 +1,4 @@
-// Author: LiXizhi
+/*// Author: LiXizhi
 // Date: 2006/4
 // Desc: just for hardware occlusion testing
 
@@ -33,7 +33,7 @@ half4 pixelShader(Interpolants i) : COLOR
 {
 	return half4(1,1,1,1);
 }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////
 //
 //                              Technique
@@ -44,26 +44,79 @@ technique OcclusionTest_vs10_ps10
 	pass P0
 	{
 		// shaders
-		VertexShader = compile vs_2_0 vertexShader();
-		PixelShader  = compile ps_2_0 pixelShader();
+		//VertexShader = compile vs_2_0 vertexShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
 		
 		// turn off color masks and zwrite
-        ZWriteEnable = 0;
+        //ZWriteEnable = 0;
         // comment this line to debug. 
-        ColorWriteEnable = 0; 
+        //ColorWriteEnable = 0; 
         FogEnable = False;
-        cullmode = none;
+        //cullmode = none;
 
         // other settings (play it safe):
-        AlphaBlendEnable = False;
-        Lighting = False;
+        //AlphaBlendEnable = False;
+        //Lighting = False;
         
 		ColorOp[0] = SelectArg1;
-		ColorArg1[0] = Diffuse;
-		ColorOp[1] = Disable;
+		//ColorArg1[0] = Diffuse;
+		//ColorOp[1] = Disable;
 
-		AlphaOp[0] = SelectArg1;
-		AlphaArg1[0] = Diffuse;
-		AlphaOp[1] = Disable;
+		//AlphaOp[0] = SelectArg1;
+		//AlphaArg1[0] = Diffuse;
+		//AlphaOp[1] = Disable;
+	}
+}
+technique Oc2123123
+{
+	pass P0
+	{
+		// shaders
+		//VertexShader = compile vs_2_0 vertexShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
+		
+		// turn off color masks and zwrite
+        //ZWriteEnable = 0;
+        // comment this line to debug. 
+        //ColorWriteEnable = 0; 
+        FogEnable = False;
+        //cullmode = none;
+
+        // other settings (play it safe):
+        //AlphaBlendEnable = False;
+        //Lighting = False;
+        
+		ColorOp[0] = SelectArg1;
+		//ColorArg1[0] = Diffuse;
+		//ColorOp[1] = Disable;
+
+		//AlphaOp[0] = SelectArg1;
+		//AlphaArg1[0] = Diffuse;
+		//AlphaOp[1] = Disable;
+	}
+	pass P1
+	{
+		// shaders
+		//VertexShader = compile vs_2_0 vertexShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
+		
+		// turn off color masks and zwrite
+        //ZWriteEnable = 0;
+        // comment this line to debug. 
+        //ColorWriteEnable = 0; 
+        FogEnable = False;
+        //cullmode = none;
+
+        // other settings (play it safe):
+        //AlphaBlendEnable = False;
+        //Lighting = False;
+        
+		ColorOp[0] = SelectArg1;
+		//ColorArg1[0] = Diffuse;
+		//ColorOp[1] = Disable;
+
+		//AlphaOp[0] = SelectArg1;
+		//AlphaArg1[0] = Diffuse;
+		//AlphaOp[1] = Disable;
 	}
 }

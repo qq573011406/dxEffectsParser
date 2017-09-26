@@ -66,7 +66,7 @@
 %token <stringVal>  STATENAME
 %token <stringVal>  STATEVALUE 
 %token				END	     0	"end of file"
-%token BRACEETS_LEFT BRACEETS_RIGHT EQUAL
+%token BRACEETS_LEFT BRACEETS_RIGHT EQUAL SEMICOLON
 
 //%type <technique>	technique_stat
 //%type <pass>	pass_stat
@@ -94,13 +94,22 @@
 %% /*** Grammar Rules ***/
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
-stmt_state	:	IDENTIFIER EQUAL IDENTIFIER {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
+stmt_state	:	IDENTIFIER EQUAL IDENTIFIER SEMICOLON {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
+            |   STATENAME EQUAL IDENTIFIER SEMICOLON {std::cout<<"state:"<<*$1<<" EqualTo "<<*$3<<std::endl;}
+stmt_state_list :   /* empty */
+                | stmt_state stmt_state_list  {}
 
-stmt_pass	:	PASS IDENTIFIER  BRACEETS_LEFT stmt_state BRACEETS_RIGHT {std::cout<<"pass:"<<*$2<<std::endl;}
+stmt_pass	:	PASS IDENTIFIER  BRACEETS_LEFT stmt_state_list BRACEETS_RIGHT {std::cout<<"pass:"<<*$2<<std::endl;}
 
-stmt_tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT stmt_pass BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
+stmt_pass_list : stmt_pass {}
+               | stmt_pass stmt_pass_list {}
 
-start	:	stmt_tec
+stmt_tec	:	TECHNIQUE IDENTIFIER BRACEETS_LEFT stmt_pass_list BRACEETS_RIGHT {std::cout<<"technique:"<<*$2<<std::endl;}
+
+stmt_tec_list   :   stmt_tec {}
+                |   stmt_tec stmt_tec_list {}
+
+start	:	stmt_tec_list
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 
