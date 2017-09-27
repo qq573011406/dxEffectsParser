@@ -17,6 +17,11 @@ technique OcclusionTest_vs10_ps10
 		CullMode = CCW;
 		FogColor = 0xff0000;
 
+		AddressU[0] = CLAMP;
+		AddressV[0] = CLAMP;
+		AddressW[0] = CLAMP;
+
+
 		// shaders
 		//VertexShader = compile vs_2_0 vertexShader();
 		//PixelShader  = compile ps_2_0 pixelShader();
