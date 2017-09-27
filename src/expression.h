@@ -17,6 +17,8 @@ enum class StateValueType
 	COMPILE,
 	BOOLEAN,
 	STRING,
+	INTEGER,
+	FLOAT,
 	UNKNOWN,
 };
 
@@ -40,10 +42,10 @@ private:
 };
 
 
-class StateCompileValue : StateAssignmentValue
+class StateCompileValue : public StateAssignmentValue
 {
 public:
-	StateCompileValue(StateValueType vt, std::string target, std::string entrypoint) :StateAssignmentValue(vt)
+	StateCompileValue( std::string target, std::string entrypoint) :StateAssignmentValue(StateValueType::COMPILE)
 	{
 		m_Target = target;
 		m_Entrypoint = entrypoint;
@@ -59,10 +61,10 @@ private:
 };
 
 
-class StateBooleanValue : StateAssignmentValue
+class StateBooleanValue : public  StateAssignmentValue
 {
 public:
-	StateBooleanValue(StateValueType vt, bool value) :StateAssignmentValue(vt)
+	StateBooleanValue(bool value) :StateAssignmentValue(StateValueType::BOOLEAN)
 	{
 		m_Val = value;
 	}
@@ -74,11 +76,41 @@ private:
 	bool m_Val;
 };
 
-
-class StateStringValue : StateAssignmentValue
+class StateIntegerValue : public  StateAssignmentValue
 {
 public:
-	StateStringValue(StateValueType vt, std::string value) :StateStringValue(vt)
+	StateIntegerValue(int value) :StateAssignmentValue(StateValueType::INTEGER)
+	{
+		m_Val = value;
+	}
+	~StateIntegerValue()override = default;
+
+	const int getValue() const { return m_Val; }
+
+private:
+	int m_Val;
+};
+
+class StateFloatValue : public  StateAssignmentValue
+{
+public:
+	StateFloatValue(float value) :StateAssignmentValue(StateValueType::FLOAT)
+	{
+		m_Val = value;
+	}
+	~StateFloatValue()override = default;
+
+	const float getValue() const { return m_Val; }
+
+private:
+	float m_Val;
+};
+
+
+class StateStringValue : public StateAssignmentValue
+{
+public:
+	StateStringValue(std::string value) :StateAssignmentValue(StateValueType::STRING)
 	{
 		m_Val = value;
 	}
@@ -151,7 +183,11 @@ class TechniqueNode
 {
 
 public:
-	TechniqueNode(){}
+	TechniqueNode(std::string name,std::vector<PassNode*> passNodes)
+	{
+		m_Name = name;
+		m_PassNodes = passNodes;
+	}
 	~TechniqueNode()
 	{
 		for (auto passNode : m_PassNodes) {
@@ -161,12 +197,7 @@ public:
 	}
 
 	const std::string getName() const { return m_Name; }
-	void setName(std::string name)
-	{
-		m_Name = name;
-	}
 	std::vector<PassNode*> getPasses() const { return m_PassNodes; }
-	void AddPass(PassNode& pass) { m_PassNodes.push_back(&pass); }
 private:
 	std::string m_Name;
 	std::vector<PassNode*> m_PassNodes;

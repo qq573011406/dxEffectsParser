@@ -62,19 +62,30 @@ class TechniqueNode;
 	typedef class PassNode				_passNode;
 	typedef std::vector<_passNode*>		_passNodes;
 	typedef class StateAssignmentNode	_stateAssignmentNode;
+	typedef std::vector<_stateAssignmentNode*> _stateAssignmentNodes;
+	typedef class StateAssignmentValue  _stateAssignmentNodeValue;
 
     _str				  *stringVal;
     _techNode			  *techValue;
 	_passNode			  *passValue;
 	_passNodes			  *passValues;
 	_stateAssignmentNode  *stateAssignmentValue;
+	_stateAssignmentNodes  *stateAssignmentValues;
+	_stateAssignmentNodeValue *stateValue;
+
+	int					  integerVal;
+	float				  floatVal;
+	bool 				  boolVal;
 
 }
 %token PASS
 %token TECHNIQUE
+%token <stringVal>  STATE_NAME
+%token <stringVal>  STRING
 %token <stringVal> 	IDENTIFIER
-%token <stringVal>  STATENAME
-%token <stringVal>  STATEVALUE 
+%token <integerVal>   INTEGER;
+%token <floatVal> FLOAT;
+%token <boolVal>  BOOLEAN
 %token				END	     0	"end of file"
 
 
@@ -92,8 +103,6 @@ class TechniqueNode;
 /* Vertex Pipe Render States */
 /* Sampler States */
 /* Shader States */
-%token PIXELSHADER
-%token VERTEXSHADER
 %token COMPILE
 /* Shader Constant States */
 /* Texture States */
@@ -106,6 +115,10 @@ class TechniqueNode;
 %type <techValue>  stmt_tec
 %type <passValue>  stmt_pass
 %type <passValues> stmt_pass_list
+%type <integerVal>   stmt_state_name_index
+%type <stateValue> stmt_state_value
+%type <stateAssignmentValue> stmt_state
+%type <stateAssignmentValues> stmt_state_list
 
 
 %destructor { delete $$; } IDENTIFIER
@@ -130,14 +143,35 @@ class TechniqueNode;
 %% /*** Grammar Rules ***/
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
-stmt_state	: VERTEXSHADER '=' COMPILE IDENTIFIER IDENTIFIER '(' ')' ';' {std::cout<<"vertex shader:"<<*$5<<std::endl;}
-            | PIXELSHADER '=' COMPILE IDENTIFIER IDENTIFIER '(' ')' ';' {std::cout<<"pixel shader:"<<*$5<<std::endl;}
-stmt_state_list :   /* empty */
-                | stmt_state stmt_state_list  {}
 
-stmt_pass	:	PASS IDENTIFIER  '{' stmt_state_list '}' {$$ = new PassNode();$$->setName(*$2);delete $2;}
+stmt_state_value: INTEGER {$$ = new StateIntegerValue($1);}
+				| FLOAT   {$$ = new StateFloatValue($1);}
+				| BOOLEAN {$$ = new StateBooleanValue($1);}
+				| STRING  {$$ = new StateStringValue(*$1);delete $1;}
+				| IDENTIFIER  {$$ = new StateStringValue(*$1);delete $1;}
+				| STATE_NAME  {$$ = new StateStringValue(*$1);delete $1;}
+				| COMPILE IDENTIFIER IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| COMPILE IDENTIFIER STRING '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| COMPILE STRING STRING '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| COMPILE STRING IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
 
-stmt_pass_list : stmt_pass {$$ = new std::vector<PassNode*>();$$->push_back($1);}
+
+stmt_state_name_index: '[' INTEGER ']' {$$ = $2;}
+
+stmt_state: STATE_NAME '=' stmt_state_value ';' {$$ = new StateAssignmentNode(*$1,$3);delete $1;}
+				| STATE_NAME stmt_state_name_index '=' stmt_state_value ';' {$$ = new StateAssignmentNode(*$1,$4,$2);delete $1;}
+
+stmt_state_list:   /* empty */ {$$ = new std::vector<StateAssignmentNode*>();}
+                | stmt_state stmt_state_list  {
+												$$ = new std::vector<StateAssignmentNode*>();
+												$$->push_back($1);
+												$$->insert($$->end(),$2->begin(),$2->end());
+												delete $2;
+											  }
+
+stmt_pass:	PASS IDENTIFIER  '{' stmt_state_list '}' {$$ = new PassNode(*$2,*$4);delete $2;}
+
+stmt_pass_list: stmt_pass {$$ = new std::vector<PassNode*>();$$->push_back($1);}
                | stmt_pass stmt_pass_list {
 											$$ = new std::vector<PassNode*>();
 											$$->push_back($1);
@@ -145,18 +179,15 @@ stmt_pass_list : stmt_pass {$$ = new std::vector<PassNode*>();$$->push_back($1);
 											delete $2;
 										   }
 
-stmt_tec	:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
-                                                                $$ = new TechniqueNode();
-                                                                $$->setName(*$2);
+stmt_tec:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
+                                                                $$ = new TechniqueNode(*$2,*$4);
+																driver.calc.AddTechnique(*$$);
 																delete $2;
-																std::vector<PassNode*> list = *($4);
-                                                                for(auto node : list){$$->AddPass(*node);}
                                                                 delete $4;
-                                                                driver.calc.AddTechnique(*$$);
                                                             }
 
-stmt_tec_list   :   stmt_tec {}
-                |   stmt_tec stmt_tec_list {}
+stmt_tec_list: stmt_tec {}
+              |   stmt_tec stmt_tec_list {}
 
 start	:	stmt_tec_list
 

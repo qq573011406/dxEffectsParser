@@ -67,24 +67,32 @@ namespace example {
     union semantic_type
     {
 /* Line 33 of lalr1.cc  */
-#line 59 "E:/Repos/dxEffectsParser/src/parser.yy"
+#line 59 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
 
 	typedef std::string					_str;
 	typedef class TechniqueNode		_techNode;
 	typedef class PassNode				_passNode;
 	typedef std::vector<_passNode*>		_passNodes;
 	typedef class StateAssignmentNode	_stateAssignmentNode;
+	typedef std::vector<_stateAssignmentNode*> _stateAssignmentNodes;
+	typedef class StateAssignmentValue  _stateAssignmentNodeValue;
 
     _str				  *stringVal;
     _techNode			  *techValue;
 	_passNode			  *passValue;
 	_passNodes			  *passValues;
 	_stateAssignmentNode  *stateAssignmentValue;
+	_stateAssignmentNodes  *stateAssignmentValues;
+	_stateAssignmentNodeValue *stateValue;
+
+	int					  integerVal;
+	float				  floatVal;
+	bool 				  boolVal;
 
 
 
 /* Line 33 of lalr1.cc  */
-#line 88 "parser.h"
+#line 96 "parser.h"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -99,12 +107,13 @@ namespace example {
      END = 0,
      PASS = 258,
      TECHNIQUE = 259,
-     IDENTIFIER = 260,
-     STATENAME = 261,
-     STATEVALUE = 262,
-     PIXELSHADER = 263,
-     VERTEXSHADER = 264,
-     COMPILE = 265
+     STATE_NAME = 260,
+     STRING = 261,
+     IDENTIFIER = 262,
+     INTEGER = 263,
+     FLOAT = 264,
+     BOOLEAN = 265,
+     COMPILE = 266
    };
 
     };
@@ -282,7 +291,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 286 "parser.h"
+#line 295 "parser.h"
 
 
 

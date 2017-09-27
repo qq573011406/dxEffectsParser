@@ -49,6 +49,15 @@ typedef example::Parser::token_type token_type;
 #define YY_USER_ACTION  yylloc->columns(yyleng);
 %}
 
+
+
+/* Effect States (Direct3D 9) Token*/
+
+es_light_states LightAmbient|LightAttenuation0|LightAttenuation1|LightAttenuation2|LightDiffuse|LightDirection|LightEnable|LightFalloff|LightPhi|LightPosition|LightRange|LightSpecular|LightTheta|LightType
+
+es_all_states {es_light_states}
+
+
 %% /*** Regular Expressions Part ***/
 
  /* code to place at the beginning of yylex() */
@@ -64,20 +73,41 @@ typedef example::Parser::token_type token_type;
 
 "pass" {return token::PASS;}
 "technique"     {return token::TECHNIQUE;}
-"VertexShader"  {return token::VERTEXSHADER;}
-"PixelShader"   {return token::PIXELSHADER;}
 "compile"   {return token::COMPILE;}
 
+{es_all_states} {
+        printf("find state name:{%s}",yytext);
+        yylval->stringVal = new std::string(yytext, yyleng);
+        return token::STATE_NAME;
+}
+
+"TRUE"  {yylval->boolVal = false;return token::BOOLEAN;}
+"FALSE" {yylval->boolVal = true;return token::BOOLEAN;}
+
+
+[0-9]+ {
+    yylval->integerVal = atoi(yytext);
+    return token::INTEGER;
+}
+
+[0-9]+"."[0-9]* {
+    yylval->floatVal = atof(yytext);
+    return token::FLOAT;
+}
+
+
 [_A-Za-z][A-Za-z0-9_]* {
-    //printf("token:IDENTIFIER = %s\n",yytext);
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::IDENTIFIER;
 }
-[_A-Za-z][A-Za-z0-9_]*(\[[0-9]+\])* {
-    //printf("token:STATENAME = %s\n",yytext);
+
+
+[A-Za-z][A-Za-z0-9_,.-]* {
     yylval->stringVal = new std::string(yytext, yyleng);
-    return token::STATENAME;
+    return token::STRING;
 }
+
+
 
  /* gobble up white-spaces */
 [ \t\r]+ {
