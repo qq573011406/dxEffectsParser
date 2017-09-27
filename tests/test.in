@@ -13,6 +13,9 @@ technique OcclusionTest_vs10_ps10
 		MaterialDiffuse = float4<0.7f, 0.0f, 0.0f, 5>;
 		MaterialPower = 3.0f;
 
+		Ambient = float4<0.7f, 0.0f, 0.0f, 1.0f>;
+		CullMode = CCW;
+		FogColor = 0xff0000;
 
 		// shaders
 		//VertexShader = compile vs_2_0 vertexShader();

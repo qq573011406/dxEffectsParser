@@ -67,6 +67,14 @@ typedef example::Parser::token_type token_type;
     yylval->doubleVal = atof(yytext);
     return token::DOUBLE;
 }
+"FogColor" {
+    yylval->stringVal = new std::string(yytext, yyleng);
+    return token::STATE_NAME;
+}
+"0xff0000" {
+    yylval->stringVal = new std::string(yytext, yyleng);
+    return token::STRING;
+}
 
 [A-Za-z][A-Za-z0-9_,.-]* {
     yylval->stringVal = new std::string(yytext, yyleng);

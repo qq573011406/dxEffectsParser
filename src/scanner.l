@@ -55,8 +55,10 @@ typedef example::Parser::token_type token_type;
 
 es_light_states LightAmbient|LightAttenuation0|LightAttenuation1|LightAttenuation2|LightDiffuse|LightDirection|LightEnable|LightFalloff|LightPhi|LightPosition|LightRange|LightSpecular|LightTheta|LightType
 es_material_states MaterialAmbient|MaterialDiffuse|MaterialEmissive|MaterialPower|MaterialSpecular
-
-es_all_states {es_light_states}|{es_material_states}
+es_pixel_render_states AlphaBlendEnable|AlphaFunc|AlphaRef|AlphaTestEnable|BlendOp|ColorWriteEnable|DepthBias|DestBlend|DitherEnable|FillMode|LastPixel|ShadeMode|SlopeScaleDepthBias|SrcBlend|StencilEnable|StencilFail|StencilFunc|StencilMask|StencilPass|StencilRef|StencilWriteMask|StencilZFail|TextureFactor|Wrap0|Wrap1|Wrap2|Wrap3|Wrap4|Wrap5|Wrap6|Wrap7|Wrap8|Wrap9|Wrap10|Wrap11|Wrap12|Wrap13|Wrap14|Wrap15
+es_vertex_render_states Ambient|AmbientMaterialSource|Clipping|ClipPlaneEnable|ColorVertex|CullMode|DiffuseMaterialSource|EmissiveMaterialSource|FogColor|FogDensity|FogEnable|FogEnd|FogStart|FogTableMode|FogVertexMode|IndexedVertexBlendEnable|Lighting|LocalViewer|MultiSampleAntialias|MultiSampleMask|NormalizeNormals|PatchSegments|PointScale_A|PointScale_B|PointScale_C|PointScaleEnable|PointSize|PointSize_Min|PointSize_Max|PointSpriteEnable|RangeFogEnable|SpecularEnable|SpecularMaterialSource|TweenFactor|VertexBlend
+es_render_states {es_pixel_render_states}|{es_vertex_render_states}
+es_all_states {es_light_states}|{es_material_states}|{es_render_states}
 
 
 %% /*** Regular Expressions Part ***/
@@ -104,7 +106,7 @@ es_all_states {es_light_states}|{es_material_states}
 }
 
 
-[A-Za-z][A-Za-z0-9_,.-]* {
+(0x)?[A-Za-z][A-Za-z0-9_,.-]* {
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::STRING;
 }
@@ -113,12 +115,12 @@ es_all_states {es_light_states}|{es_material_states}
 
  /* gobble up white-spaces */
 [ \t\r]+ {
-    //yylloc->step();
+    yylloc->step();
 }
 
  /* gobble up end-of-lines */
 \n {
-
+    yylloc->lines(yyleng); yylloc->step();
 }
 
  /* pass all other characters up to bison */
