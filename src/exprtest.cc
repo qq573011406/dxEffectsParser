@@ -36,6 +36,8 @@ int main(int argc, char *argv[])
 	    bool result = driver.parse_stream(infile, argv[ai]);
 	    if (result)
 		{
+			std::cout << "CodeBlock:" << std::endl;
+			std::cout<<calc.getCodeBlock()<<std::endl;
 			std::cout << "Techniques:" << std::endl;
 			auto techiques = calc.getTechiques();
 			for (unsigned int ei = 0; ei < techiques.size(); ++ei)

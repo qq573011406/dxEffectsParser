@@ -325,8 +325,10 @@ public:
 		}
 		m_Techniques.clear();
 	}
+	const std::string getCodeBlock() const { return m_HLSLCodeBlock.str(); }
 	const std::vector<TechniqueNode*> getTechiques() const { return m_Techniques; }
 	void AddTechnique(TechniqueNode& technique) { m_Techniques.push_back(&technique); }
+
 	void AddCodeBlock(std::string hlslCode)
 	{
 		m_HLSLCodeBlock << hlslCode << std::endl;
