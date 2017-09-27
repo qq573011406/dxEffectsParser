@@ -70,6 +70,7 @@ namespace example {
 #line 59 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
 
 	typedef std::string					_str;
+	typedef std::vector<_str*>			_strs;
 	typedef class TechniqueNode		_techNode;
 	typedef class PassNode				_passNode;
 	typedef std::vector<_passNode*>		_passNodes;
@@ -77,7 +78,9 @@ namespace example {
 	typedef std::vector<_stateAssignmentNode*> _stateAssignmentNodes;
 	typedef class StateAssignmentValue  _stateAssignmentNodeValue;
 
+
     _str				  *stringVal;
+	_strs				  *stringValues;
     _techNode			  *techValue;
 	_passNode			  *passValue;
 	_passNodes			  *passValues;
@@ -92,7 +95,7 @@ namespace example {
 
 
 /* Line 33 of lalr1.cc  */
-#line 96 "parser.h"
+#line 99 "parser.h"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -113,10 +116,11 @@ namespace example {
      STATE_NAME = 263,
      STRING = 264,
      IDENTIFIER = 265,
-     INTEGER = 266,
-     FLOAT = 267,
-     BOOLEAN = 268,
-     COMPILE = 269
+     HLSL_CODE_BLOCK = 266,
+     INTEGER = 267,
+     FLOAT = 268,
+     BOOLEAN = 269,
+     COMPILE = 270
    };
 
     };
@@ -294,7 +298,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 298 "parser.h"
+#line 302 "parser.h"
 
 
 

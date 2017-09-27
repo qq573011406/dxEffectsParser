@@ -56,7 +56,7 @@ class TechniqueNode;
 
 /* User implementation prologue.  */
 /* Line 286 of lalr1.cc  */
-#line 129 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 113 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
 
 
 #include "driver.h"
@@ -269,21 +269,21 @@ namespace example {
       {
         case 10: /* IDENTIFIER */
 /* Line 456 of lalr1.cc  */
-#line 123 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 107 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).stringVal); };
 /* Line 456 of lalr1.cc  */
 #line 276 "parser.cc"
         break;
-      case 33: /* stmt_pass */
+      case 34: /* stmt_pass */
 /* Line 456 of lalr1.cc  */
-#line 125 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 109 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).passValue); };
 /* Line 456 of lalr1.cc  */
 #line 283 "parser.cc"
         break;
-      case 35: /* stmt_tec */
+      case 36: /* stmt_tec */
 /* Line 456 of lalr1.cc  */
-#line 124 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 108 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).techValue); };
 /* Line 456 of lalr1.cc  */
 #line 290 "parser.cc"
@@ -507,67 +507,67 @@ namespace example {
       {
           case 2:
 /* Line 671 of lalr1.cc  */
-#line 146 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 130 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.floatVal) = (yysemantic_stack_[(1) - (1)].floatVal);}
     break;
 
   case 3:
 /* Line 671 of lalr1.cc  */
-#line 147 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 131 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.floatVal) = (yysemantic_stack_[(1) - (1)].integerVal);}
     break;
 
   case 4:
 /* Line 671 of lalr1.cc  */
-#line 149 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 133 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 5:
 /* Line 671 of lalr1.cc  */
-#line 150 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 134 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 6:
 /* Line 671 of lalr1.cc  */
-#line 151 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 135 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 7:
 /* Line 671 of lalr1.cc  */
-#line 154 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 138 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateIntegerValue((yysemantic_stack_[(1) - (1)].integerVal));}
     break;
 
   case 8:
 /* Line 671 of lalr1.cc  */
-#line 155 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 139 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateFloatValue((yysemantic_stack_[(1) - (1)].floatVal));}
     break;
 
   case 9:
 /* Line 671 of lalr1.cc  */
-#line 156 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 140 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateBooleanValue((yysemantic_stack_[(1) - (1)].boolVal));}
     break;
 
   case 10:
 /* Line 671 of lalr1.cc  */
-#line 157 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 141 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateStringValue(*(yysemantic_stack_[(1) - (1)].stringVal));delete (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 11:
 /* Line 671 of lalr1.cc  */
-#line 158 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 142 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateCompileValue(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (3)].stringVal));delete (yysemantic_stack_[(5) - (2)].stringVal);delete (yysemantic_stack_[(5) - (3)].stringVal);}
     break;
 
   case 12:
 /* Line 671 of lalr1.cc  */
-#line 159 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 143 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
 					float temp[2] = {(yysemantic_stack_[(6) - (3)].floatVal),(yysemantic_stack_[(6) - (5)].floatVal)};
 					(yyval.stateValue) = new StateFloat2Value(temp);
@@ -576,7 +576,7 @@ namespace example {
 
   case 13:
 /* Line 671 of lalr1.cc  */
-#line 163 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 147 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
 					float temp[3] = {(yysemantic_stack_[(8) - (3)].floatVal),(yysemantic_stack_[(8) - (5)].floatVal),(yysemantic_stack_[(8) - (7)].floatVal)};
 					(yyval.stateValue) = new StateFloat3Value(temp);
@@ -585,7 +585,7 @@ namespace example {
 
   case 14:
 /* Line 671 of lalr1.cc  */
-#line 167 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 151 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
 					float temp[4] = {(yysemantic_stack_[(10) - (3)].floatVal),(yysemantic_stack_[(10) - (5)].floatVal),(yysemantic_stack_[(10) - (7)].floatVal),(yysemantic_stack_[(10) - (9)].floatVal)};
 					(yyval.stateValue) = new StateFloat4Value(temp);
@@ -594,31 +594,31 @@ namespace example {
 
   case 15:
 /* Line 671 of lalr1.cc  */
-#line 173 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 157 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.integerVal) = (yysemantic_stack_[(3) - (2)].integerVal);}
     break;
 
   case 16:
 /* Line 671 of lalr1.cc  */
-#line 175 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 159 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValue) = new StateAssignmentNode(*(yysemantic_stack_[(4) - (1)].stringVal),(yysemantic_stack_[(4) - (3)].stateValue),-1);delete (yysemantic_stack_[(4) - (1)].stringVal);}
     break;
 
   case 17:
 /* Line 671 of lalr1.cc  */
-#line 176 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 160 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValue) = new StateAssignmentNode(*(yysemantic_stack_[(5) - (1)].stringVal),(yysemantic_stack_[(5) - (4)].stateValue),(yysemantic_stack_[(5) - (2)].integerVal));delete (yysemantic_stack_[(5) - (1)].stringVal);}
     break;
 
   case 18:
 /* Line 671 of lalr1.cc  */
-#line 178 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 162 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValues) = new std::vector<StateAssignmentNode*>();}
     break;
 
   case 19:
 /* Line 671 of lalr1.cc  */
-#line 179 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 163 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
 												(yyval.stateAssignmentValues) = new std::vector<StateAssignmentNode*>();
 												(yyval.stateAssignmentValues)->push_back((yysemantic_stack_[(2) - (1)].stateAssignmentValue));
@@ -629,19 +629,19 @@ namespace example {
 
   case 20:
 /* Line 671 of lalr1.cc  */
-#line 186 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 170 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.passValue) = new PassNode(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (4)].stateAssignmentValues));delete (yysemantic_stack_[(5) - (2)].stringVal);}
     break;
 
   case 21:
 /* Line 671 of lalr1.cc  */
-#line 188 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 172 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {(yyval.passValues) = new std::vector<PassNode*>();(yyval.passValues)->push_back((yysemantic_stack_[(1) - (1)].passValue));}
     break;
 
   case 22:
 /* Line 671 of lalr1.cc  */
-#line 189 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 173 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
 											(yyval.passValues) = new std::vector<PassNode*>();
 											(yyval.passValues)->push_back((yysemantic_stack_[(2) - (1)].passValue));
@@ -652,7 +652,7 @@ namespace example {
 
   case 23:
 /* Line 671 of lalr1.cc  */
-#line 196 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 180 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
                                                                 (yyval.techValue) = new TechniqueNode(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (4)].passValues));
 																driver.calc.AddTechnique(*(yyval.techValue));
@@ -663,19 +663,37 @@ namespace example {
 
   case 24:
 /* Line 671 of lalr1.cc  */
-#line 203 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 187 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {}
     break;
 
   case 25:
 /* Line 671 of lalr1.cc  */
-#line 204 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 188 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {}
+    break;
+
+  case 26:
+/* Line 671 of lalr1.cc  */
+#line 190 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+    {}
+    break;
+
+  case 27:
+/* Line 671 of lalr1.cc  */
+#line 191 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+    {driver.calc.AddCodeBlock(*(yysemantic_stack_[(1) - (1)].stringVal));delete (yysemantic_stack_[(1) - (1)].stringVal);}
+    break;
+
+  case 28:
+/* Line 671 of lalr1.cc  */
+#line 192 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+    {driver.calc.AddCodeBlock(*(yysemantic_stack_[(2) - (1)].stringVal));delete (yysemantic_stack_[(2) - (1)].stringVal);}
     break;
 
 
 /* Line 671 of lalr1.cc  */
-#line 679 "parser.cc"
+#line 697 "parser.cc"
       default:
         break;
       }
@@ -975,17 +993,18 @@ namespace example {
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char Parser::yypact_ninf_ = -41;
+  const signed char Parser::yypact_ninf_ = -45;
   const signed char
   Parser::yypact_[] =
   {
-        15,    17,    15,   -41,    25,     4,   -41,   -41,    26,    20,
-      26,     6,     8,   -41,   -41,    27,    -2,    27,     9,    22,
-      -3,    14,   -41,   -41,    16,    21,    23,    24,   -41,   -41,
-     -41,   -41,   -41,   -41,     7,   -41,    19,    -3,   -41,    12,
-      12,    12,    29,   -41,    28,   -41,   -41,    30,    31,    32,
-      37,   -41,    12,    12,    12,    38,    34,    39,    40,   -41,
-     -41,    12,    12,    36,    41,   -41,    12,    42,   -41
+        -2,    -3,    -1,     7,   -45,     7,    16,     0,   -45,   -45,
+     -45,   -45,    17,    13,    17,    14,     8,   -45,   -45,    30,
+     -15,    30,    15,    27,    22,     1,   -45,   -45,    20,    25,
+      26,    28,   -45,   -45,   -45,   -45,   -45,   -45,    -5,   -45,
+      21,    22,   -45,     6,     6,     6,    37,   -45,    24,   -45,
+     -45,    31,    32,    33,    38,   -45,     6,     6,     6,    36,
+      29,    39,    40,   -45,   -45,     6,     6,    35,    41,   -45,
+       6,    42,   -45
   };
 
   /* YYDEFACT[S] -- default reduction number in state S.  Performed when
@@ -994,29 +1013,30 @@ namespace example {
   const unsigned char
   Parser::yydefact_[] =
   {
-         0,     0,    24,    26,     0,     0,    25,     1,     0,     0,
-      21,     0,     0,    22,    23,    18,     0,    18,     0,     0,
-       0,     0,    19,    20,     0,     0,     0,     0,     5,     4,
-       6,     7,     8,     9,     0,    10,     0,     0,    15,     0,
-       0,     0,     0,    16,     0,     3,     2,     0,     0,     0,
-       0,    17,     0,     0,     0,     0,     0,     0,     0,    11,
-      12,     0,     0,     0,     0,    13,     0,     0,    14
+        26,     0,    26,    24,    31,    29,     0,     0,    28,    25,
+      30,     1,     0,     0,    21,     0,     0,    22,    23,    18,
+       0,    18,     0,     0,     0,     0,    19,    20,     0,     0,
+       0,     0,     5,     4,     6,     7,     8,     9,     0,    10,
+       0,     0,    15,     0,     0,     0,     0,    16,     0,     3,
+       2,     0,     0,     0,     0,    17,     0,     0,     0,     0,
+       0,     0,     0,    11,    12,     0,     0,     0,     0,    13,
+       0,     0,    14
   };
 
   /* YYPGOTO[NTERM-NUM].  */
   const signed char
   Parser::yypgoto_[] =
   {
-       -41,   -40,    10,    33,   -41,   -41,    43,   -41,    35,   -41,
-      44,   -41
+       -45,   -44,    18,    23,   -45,   -45,    44,   -45,    43,   -45,
+      12,    59,   -45
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
   const signed char
   Parser::yydefgoto_[] =
   {
-        -1,    47,    35,    36,    21,    17,    18,    10,    11,     2,
-       3,     4
+        -1,    51,    39,    40,    25,    21,    22,    14,    15,     3,
+       4,     5,     6
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -1026,28 +1046,26 @@ namespace example {
   const unsigned char
   Parser::yytable_[] =
   {
-        48,    49,    25,    26,    27,    28,    29,    30,    31,    32,
-      33,    34,    56,    57,    58,    28,    29,    30,    19,     1,
-      20,    63,    64,    45,    46,     7,    67,     5,     8,     9,
-      12,    14,    15,    24,    23,    16,    37,    38,    39,    50,
-      40,    41,    43,     0,    42,    13,     6,     0,    52,    53,
-      54,    51,    55,    60,    59,    65,     0,    61,    62,    66,
-      22,    68,     0,     0,     0,     0,     0,     0,     0,     0,
-      44
+        52,    53,     1,    32,    33,    34,    23,     7,    24,     2,
+       2,     1,    60,    61,    62,     9,    11,    10,    49,    50,
+      13,    67,    68,    16,    41,    12,    71,    29,    30,    31,
+      32,    33,    34,    19,    35,    36,    37,    38,    20,    28,
+      18,    27,    42,    43,    44,    47,    45,    54,    55,    64,
+      56,    57,    58,    63,    59,    69,    46,    17,    65,    66,
+      70,     8,    72,     0,    48,    26
   };
 
   /* YYCHECK.  */
   const signed char
   Parser::yycheck_[] =
   {
-        40,    41,     5,     6,     7,     8,     9,    10,    11,    12,
-      13,    14,    52,    53,    54,     8,     9,    10,    20,     4,
-      22,    61,    62,    11,    12,     0,    66,    10,    24,     3,
-      10,    25,    24,    11,    25,     8,    22,    21,    17,    10,
-      17,    17,    23,    -1,    34,    10,     2,    -1,    18,    18,
-      18,    23,    15,    19,    16,    19,    -1,    18,    18,    18,
-      17,    19,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      37
+        44,    45,     4,     8,     9,    10,    21,    10,    23,    11,
+      11,     4,    56,    57,    58,     3,     0,     5,    12,    13,
+       3,    65,    66,    10,    23,    25,    70,     5,     6,     7,
+       8,     9,    10,    25,    12,    13,    14,    15,     8,    12,
+      26,    26,    22,    18,    18,    24,    18,    10,    24,    20,
+      19,    19,    19,    17,    16,    20,    38,    14,    19,    19,
+      19,     2,    20,    -1,    41,    21
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -1055,13 +1073,14 @@ namespace example {
   const unsigned char
   Parser::yystos_[] =
   {
-         0,     4,    35,    36,    37,    10,    36,     0,    24,     3,
-      33,    34,    10,    34,    25,    24,     8,    31,    32,    20,
-      22,    30,    32,    25,    11,     5,     6,     7,     8,     9,
-      10,    11,    12,    13,    14,    28,    29,    22,    21,    17,
-      17,    17,    28,    23,    29,    11,    12,    27,    27,    27,
-      10,    23,    18,    18,    18,    15,    27,    27,    27,    16,
-      19,    18,    18,    27,    27,    19,    18,    27,    19
+         0,     4,    11,    36,    37,    38,    39,    10,    38,    37,
+      37,     0,    25,     3,    34,    35,    10,    35,    26,    25,
+       8,    32,    33,    21,    23,    31,    33,    26,    12,     5,
+       6,     7,     8,     9,    10,    12,    13,    14,    15,    29,
+      30,    23,    22,    18,    18,    18,    29,    24,    30,    12,
+      13,    28,    28,    28,    10,    24,    19,    19,    19,    16,
+      28,    28,    28,    17,    20,    19,    19,    28,    28,    20,
+      19,    28,    20
   };
 
 #if YYDEBUG
@@ -1071,8 +1090,8 @@ namespace example {
   Parser::yytoken_number_[] =
   {
          0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,    40,    41,    60,    44,    62,
-      91,    93,    61,    59,   123,   125
+     265,   266,   267,   268,   269,   270,    40,    41,    60,    44,
+      62,    91,    93,    61,    59,   123,   125
   };
 #endif
 
@@ -1080,9 +1099,10 @@ namespace example {
   const unsigned char
   Parser::yyr1_[] =
   {
-         0,    26,    27,    27,    28,    28,    28,    29,    29,    29,
-      29,    29,    29,    29,    29,    30,    31,    31,    32,    32,
-      33,    34,    34,    35,    36,    36,    37
+         0,    27,    28,    28,    29,    29,    29,    30,    30,    30,
+      30,    30,    30,    30,    30,    31,    32,    32,    33,    33,
+      34,    35,    35,    36,    37,    37,    38,    38,    38,    39,
+      39,    39
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -1091,7 +1111,8 @@ namespace example {
   {
          0,     2,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     5,     6,     8,    10,     3,     4,     5,     0,     2,
-       5,     1,     2,     5,     1,     2,     1
+       5,     1,     2,     5,     1,     2,     0,     1,     2,     1,
+       2,     1
   };
 
 
@@ -1100,13 +1121,13 @@ namespace example {
   const char*
   const Parser::yytname_[] =
   {
-    "\"end of file\"", "error", "$undefined", "PASS", "TECHNIQUE", "FLOAT2",
-  "FLOAT3", "FLOAT4", "STATE_NAME", "STRING", "IDENTIFIER", "INTEGER",
-  "FLOAT", "BOOLEAN", "COMPILE", "'('", "')'", "'<'", "','", "'>'", "'['",
-  "']'", "'='", "';'", "'{'", "'}'", "$accept", "stmt_float",
+    "END", "error", "$undefined", "PASS", "TECHNIQUE", "FLOAT2", "FLOAT3",
+  "FLOAT4", "STATE_NAME", "STRING", "IDENTIFIER", "HLSL_CODE_BLOCK",
+  "INTEGER", "FLOAT", "BOOLEAN", "COMPILE", "'('", "')'", "'<'", "','",
+  "'>'", "'['", "']'", "'='", "';'", "'{'", "'}'", "$accept", "stmt_float",
   "stmt_string", "stmt_state_value", "stmt_state_name_index", "stmt_state",
   "stmt_state_list", "stmt_pass", "stmt_pass_list", "stmt_tec",
-  "stmt_tec_list", "start", YY_NULL
+  "stmt_tec_list", "stmt_code_blocks", "start", YY_NULL
   };
 
 #if YYDEBUG
@@ -1114,16 +1135,17 @@ namespace example {
   const Parser::rhs_number_type
   Parser::yyrhs_[] =
   {
-        37,     0,    -1,    12,    -1,    11,    -1,     9,    -1,     8,
-      -1,    10,    -1,    11,    -1,    12,    -1,    13,    -1,    28,
-      -1,    14,    28,    10,    15,    16,    -1,     5,    17,    27,
-      18,    27,    19,    -1,     6,    17,    27,    18,    27,    18,
-      27,    19,    -1,     7,    17,    27,    18,    27,    18,    27,
-      18,    27,    19,    -1,    20,    11,    21,    -1,     8,    22,
-      29,    23,    -1,     8,    30,    22,    29,    23,    -1,    -1,
-      31,    32,    -1,     3,    10,    24,    32,    25,    -1,    33,
-      -1,    33,    34,    -1,     4,    10,    24,    34,    25,    -1,
-      35,    -1,    35,    36,    -1,    36,    -1
+        39,     0,    -1,    13,    -1,    12,    -1,     9,    -1,     8,
+      -1,    10,    -1,    12,    -1,    13,    -1,    14,    -1,    29,
+      -1,    15,    29,    10,    16,    17,    -1,     5,    18,    28,
+      19,    28,    20,    -1,     6,    18,    28,    19,    28,    19,
+      28,    20,    -1,     7,    18,    28,    19,    28,    19,    28,
+      19,    28,    20,    -1,    21,    12,    22,    -1,     8,    23,
+      30,    24,    -1,     8,    31,    23,    30,    24,    -1,    -1,
+      32,    33,    -1,     3,    10,    25,    33,    26,    -1,    34,
+      -1,    34,    35,    -1,     4,    10,    25,    35,    26,    -1,
+      36,    -1,    36,    37,    -1,    -1,    11,    -1,    11,    38,
+      -1,    38,    -1,    38,    37,    -1,    37,    -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -1133,16 +1155,18 @@ namespace example {
   {
          0,     0,     3,     5,     7,     9,    11,    13,    15,    17,
       19,    21,    27,    34,    43,    54,    58,    63,    69,    70,
-      73,    79,    81,    84,    90,    92,    95
+      73,    79,    81,    84,    90,    92,    95,    96,    98,   101,
+     103,   106
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   const unsigned char
   Parser::yyrline_[] =
   {
-         0,   146,   146,   147,   149,   150,   151,   154,   155,   156,
-     157,   158,   159,   163,   167,   173,   175,   176,   178,   179,
-     186,   188,   189,   196,   203,   204,   206
+         0,   130,   130,   131,   133,   134,   135,   138,   139,   140,
+     141,   142,   143,   147,   151,   157,   159,   160,   162,   163,
+     170,   172,   173,   180,   187,   188,   190,   191,   192,   194,
+     195,   196
   };
 
   // Print the state stack on the debug stream.
@@ -1186,15 +1210,15 @@ namespace example {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      15,    16,     2,     2,    18,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    23,
-      17,    22,    19,     2,     2,     2,     2,     2,     2,     2,
+      16,    17,     2,     2,    19,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    24,
+      18,    23,    20,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    20,     2,    21,     2,     2,     2,     2,     2,     2,
+       2,    21,     2,    22,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    24,     2,    25,     2,     2,     2,     2,
+       2,     2,     2,    25,     2,    26,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -1208,7 +1232,8 @@ namespace example {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    14
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15
     };
     if ((unsigned int) t <= yyuser_token_number_max_)
       return translate_table[t];
@@ -1217,23 +1242,23 @@ namespace example {
   }
 
   const int Parser::yyeof_ = 0;
-  const int Parser::yylast_ = 70;
-  const int Parser::yynnts_ = 12;
+  const int Parser::yylast_ = 65;
+  const int Parser::yynnts_ = 13;
   const int Parser::yyempty_ = -2;
-  const int Parser::yyfinal_ = 7;
+  const int Parser::yyfinal_ = 11;
   const int Parser::yyterror_ = 1;
   const int Parser::yyerrcode_ = 256;
-  const int Parser::yyntokens_ = 26;
+  const int Parser::yyntokens_ = 27;
 
-  const unsigned int Parser::yyuser_token_number_max_ = 269;
+  const unsigned int Parser::yyuser_token_number_max_ = 270;
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
 
 } // example
 /* Line 1142 of lalr1.cc  */
-#line 1235 "parser.cc"
+#line 1260 "parser.cc"
 /* Line 1143 of lalr1.cc  */
-#line 210 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 200 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
  /*** Additional Code ***/
 
 void example::Parser::error(const Parser::location_type& l,

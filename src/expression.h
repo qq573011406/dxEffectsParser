@@ -327,8 +327,13 @@ public:
 	}
 	const std::vector<TechniqueNode*> getTechiques() const { return m_Techniques; }
 	void AddTechnique(TechniqueNode& technique) { m_Techniques.push_back(&technique); }
+	void AddCodeBlock(std::string hlslCode)
+	{
+		m_HLSLCodeBlock << hlslCode << std::endl;
+	}
 private:
 	std::vector<TechniqueNode*> m_Techniques;
+	std::stringstream m_HLSLCodeBlock;
 };
 
 

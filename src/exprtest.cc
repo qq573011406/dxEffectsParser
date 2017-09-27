@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
     DxEffectsTree calc;
     example::Driver driver(calc);
     bool readfile = false;
-
+	//driver.trace_parsing = true;
+	//driver.trace_scanning = true;
     for(int ai = 1; ai < argc; ++ai)
     {
 	if (argv[ai] == std::string ("-p")) {

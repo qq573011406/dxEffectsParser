@@ -4,8 +4,13 @@
 %{ /*** C/C++ Declarations ***/
 
 #include <string>
-
+#include <sstream>
 #include "scanner.h"
+
+
+/* HLSL Code Block */
+
+std::stringstream code_block;
 
 /* import the parser's token type into a local typedef */
 typedef example::Parser::token token;
@@ -42,6 +47,7 @@ typedef example::Parser::token_type token_type;
 /* enables the use of start condition stacks */
 %option stack
 
+%x PARSE_STATE_HLSLCODEBLOCK
 
 /* The following paragraph suffices to track locations accurately. Each time
  * yylex is invoked, the begin position is moved onto the end position. */
@@ -74,21 +80,43 @@ es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_samp
 
  /* code to place at the beginning of yylex() */
 %{
+    BEGIN(INITIAL);
     // reset location
     yylloc->step();
 %}
 
- /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
+
+"//HLSL_CODE_BEGIN"  {
+        BEGIN PARSE_STATE_HLSLCODEBLOCK;
+        code_block.clear();
+        code_block.str("");
+    }
+<PARSE_STATE_HLSLCODEBLOCK>"//HLSL_CODE_END" {
+    yylval->stringVal = new std::string(code_block.str());
+    code_block.clear();
+    code_block.str("");
+    //BEGIN(INITIAL);
+    return token::HLSL_CODE_BLOCK;
+}
+<PARSE_STATE_HLSLCODEBLOCK>[^\r\n]+ {
+    code_block<<yytext;
+}
+<PARSE_STATE_HLSLCODEBLOCK>\n|\r {
+    code_block<<std::endl;
+    yylloc->lines(yyleng);yylloc->step();
+}
+
+
 
 "/*"([^*]|"*"[^/])*"*/"  { /* skip comments */ }
 "//"[^\r\n]*             { /* skip comments */ }
-
-"pass"          {return token::PASS;}
 "technique"     {return token::TECHNIQUE;}
+"pass"          {return token::PASS;}
 "compile"       {return token::COMPILE;}
 "float2"        {return token::FLOAT2;}
 "float3"        {return token::FLOAT3;}
 "float4"        {return token::FLOAT4;}
+
 {es_all_states} {
         yylval->stringVal = new std::string(yytext, yyleng);
         return token::STATE_NAME;
@@ -96,7 +124,6 @@ es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_samp
 
 [tT][rR][uU][eE]  {yylval->boolVal = true;return token::BOOLEAN;}
 [fF][aA][lL][sS][eE] {yylval->boolVal = false;return token::BOOLEAN;}
-
 
 [0-9]+ {
     yylval->integerVal = atoi(yytext);
@@ -122,20 +149,11 @@ es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_samp
 
 
 
- /* gobble up white-spaces */
-[ \t\r]+ {
-    yylloc->step();
-}
+[ \t\r]+ {yylloc->step();}
 
- /* gobble up end-of-lines */
-\n {
-    yylloc->lines(yyleng); yylloc->step();
-}
+\n {yylloc->lines(yyleng); yylloc->step();}
+.  {return static_cast<token_type>(*yytext);}
 
- /* pass all other characters up to bison */
-.   {
-        return static_cast<token_type>(*yytext);
-    }
 
  /*** END EXAMPLE - Change the example lexer rules above ***/
 

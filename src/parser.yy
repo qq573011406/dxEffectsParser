@@ -58,6 +58,7 @@ class TechniqueNode;
 
 %union {
 	typedef std::string					_str;
+	typedef std::vector<_str*>			_strs;
 	typedef class TechniqueNode		_techNode;
 	typedef class PassNode				_passNode;
 	typedef std::vector<_passNode*>		_passNodes;
@@ -65,7 +66,9 @@ class TechniqueNode;
 	typedef std::vector<_stateAssignmentNode*> _stateAssignmentNodes;
 	typedef class StateAssignmentValue  _stateAssignmentNodeValue;
 
+
     _str				  *stringVal;
+	_strs				  *stringValues;
     _techNode			  *techValue;
 	_passNode			  *passValue;
 	_passNodes			  *passValues;
@@ -80,37 +83,19 @@ class TechniqueNode;
 }
 %token PASS TECHNIQUE
 %token FLOAT2 FLOAT3 FLOAT4
-%token <stringVal>  STATE_NAME STRING IDENTIFIER
+%token <stringVal>  STATE_NAME STRING IDENTIFIER HLSL_CODE_BLOCK
 %token <integerVal>   INTEGER;
 %token <floatVal> FLOAT;
 %token <boolVal>  BOOLEAN
-%token	END	     0	"end of file"
+%token	END	     0	
 
 
-
-
-
-/// Beigin Effect States (Direct3D 9)
-//effect state [ [index] ] = expression;
-
-
-/* Light States */
-
-/* Material States */
-/* Pixel Pipe Render States */
-/* Vertex Pipe Render States */
-/* Sampler States */
-/* Shader States */
 %token COMPILE
-/* Shader Constant States */
-/* Texture States */
-/* Texture Stage States */
-/* Transform States */
-/* Sampler Stage States */
-/// End Of Effect States (Direct3D 9)
+
 
 %type <floatVal>   stmt_float
 %type <stringVal>  stmt_string
+%type <stringValues>  stmt_code_blocks
 %type <techValue>  stmt_tec
 %type <passValue>  stmt_pass
 %type <passValues> stmt_pass_list
@@ -118,7 +103,6 @@ class TechniqueNode;
 %type <stateValue> stmt_state_value
 %type <stateAssignmentValue> stmt_state
 %type <stateAssignmentValues> stmt_state_list
-
 
 %destructor { delete $$; } IDENTIFIER
 %destructor { delete $$; } stmt_tec
@@ -203,7 +187,13 @@ stmt_tec:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
 stmt_tec_list: stmt_tec {}
               |   stmt_tec stmt_tec_list {}
 
-start	:	stmt_tec_list
+stmt_code_blocks : {}
+			| HLSL_CODE_BLOCK {driver.calc.AddCodeBlock(*$1);delete $1;}
+			| HLSL_CODE_BLOCK stmt_code_blocks {driver.calc.AddCodeBlock(*$1);delete $1;}
+
+start	:   stmt_code_blocks
+		|   stmt_code_blocks stmt_tec_list
+		|   stmt_tec_list
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 
