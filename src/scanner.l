@@ -56,7 +56,7 @@ typedef example::Parser::token_type token_type;
 es_light_states LightAmbient|LightAttenuation0|LightAttenuation1|LightAttenuation2|LightDiffuse|LightDirection|LightEnable|LightFalloff|LightPhi|LightPosition|LightRange|LightSpecular|LightTheta|LightType
 es_material_states MaterialAmbient|MaterialDiffuse|MaterialEmissive|MaterialPower|MaterialSpecular
 
-es_all_states {es_light_states}
+es_all_states {es_light_states}|{es_material_states}
 
 
 %% /*** Regular Expressions Part ***/

@@ -9,6 +9,11 @@ technique OcclusionTest_vs10_ps10
 		LightType[1] = 3;
 		LightPosition[1] = float3<3,3,3>;
 		LightPosition[2] = float2<2,25.222f>;
+
+		//MaterialDiffuse = float4<0.7f, 0.0f, 0.0f, 1.0f>;
+		MaterialPower = 3.0f;
+
+
 		// shaders
 		//VertexShader = compile vs_2_0 vertexShader();
 		//PixelShader  = compile ps_2_0 pixelShader();
