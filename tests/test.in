@@ -25,6 +25,8 @@ technique OcclusionTest_vs10_ps10
 		VertexShaderConstant1 = float4<1,2,3,4>;
 		Texture[0] = NULL;
 		AlphaOp[0] = HELLO;
+
+		WorldTransform = NULL;
 	}
 
 	pass P1

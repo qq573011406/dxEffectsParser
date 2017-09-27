@@ -64,7 +64,9 @@ es_shader_states PixelShader|VertexShader
 es_shader_constant_states PixelShaderConstant|PixelShaderConstant1|PixelShaderConstant2|PixelShaderConstant3|PixelShaderConstant4|PixelShaderConstantB|PixelShaderConstantI|PixelShaderConstantF|VertexShaderConstant|VertexShaderConstant1|VertexShaderConstant2|VertexShaderConstant3|VertexShaderConstant4|VertexShaderConstantB|VertexShaderConstantI|VertexShaderConstantF
 es_texture_states Texture
 es_texture_stage_states AlphaOp|AlphaArg0|AlphaArg1|AlphaArg2|ColorArg0|ColorArg1|ColorArg2|ColorOp|BumpEnvLScale|BumpEnvLOffset|BumpEnvMat00|BumpEnvMat01|BumpEnvMat10|BumpEnvMat11|ResultArg|TexCoordIndex|TextureTransformFlags
-es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_sampler_states}|{es_sampler_stage_states}|{es_shader_states}|{es_shader_constant_states}|{es_texture_states}|{es_texture_stage_states}
+es_transform_states ProjectionTransform|TextureTransform|ViewTransform|WorldTransform
+
+es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_sampler_states}|{es_sampler_stage_states}|{es_shader_states}|{es_shader_constant_states}|{es_texture_states}|{es_texture_stage_states}|{es_transform_states}
 
 
 
