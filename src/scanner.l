@@ -60,7 +60,11 @@ es_vertex_render_states Ambient|AmbientMaterialSource|Clipping|ClipPlaneEnable|C
 es_render_states {es_pixel_render_states}|{es_vertex_render_states}
 es_sampler_states Sampler
 es_sampler_stage_states AddressU|AddressV|AddressW|BorderColor|MagFilter|MaxAnisotropy|MaxAnisotropy|MaxMipLevel|MinFilter|MipFilter|MipMapLodBias|SRGBTexture
-es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_sampler_states}|{es_sampler_stage_states}
+es_shader_states PixelShader|VertexShader
+
+
+es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_sampler_states}|{es_sampler_stage_states}|{es_shader_states}
+
 
 
 %% /*** Regular Expressions Part ***/
