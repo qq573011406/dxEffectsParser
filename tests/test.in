@@ -20,14 +20,9 @@ technique OcclusionTest_vs10_ps10
 		AddressU[0] = CLAMP;
 		AddressV[0] = CLAMP;
 		AddressW[0] = CLAMP;
-
-		VertexShader = compile vs_1_1 VSTexture();
-		PixelShader  = NULL;
-
-
-		// shaders
-		VertexShader = compile vs_2_0 vertexShader();
+		//shaders
 		PixelShader  = compile ps_2_0 pixelShader();
+		VertexShaderConstant1 = float4<1,2,3,4>;
 	}
 
 	pass P1
