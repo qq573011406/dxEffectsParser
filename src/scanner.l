@@ -54,7 +54,7 @@ typedef example::Parser::token_type token_type;
 /* Effect States (Direct3D 9) Token*/
 
 es_light_states LightAmbient|LightAttenuation0|LightAttenuation1|LightAttenuation2|LightDiffuse|LightDirection|LightEnable|LightFalloff|LightPhi|LightPosition|LightRange|LightSpecular|LightTheta|LightType
-es_material_states Material State|MaterialAmbient|MaterialDiffuse|MaterialEmissive|MaterialPower|MaterialSpecular
+es_material_states MaterialAmbient|MaterialDiffuse|MaterialEmissive|MaterialPower|MaterialSpecular
 
 es_all_states {es_light_states}
 
