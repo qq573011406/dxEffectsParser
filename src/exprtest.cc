@@ -44,6 +44,23 @@ int main(int argc, char *argv[])
 				for (unsigned int pi =0;pi<passes.size();pi++)
 				{
 					std::cout << "\tPass " << (passes[pi]->getName()) << std::endl;
+					auto states = passes[pi]->getStateAssignments();
+					for (unsigned int  si = 0;si<states.size();si++)
+					{
+						auto state = states[si];
+						int nameIndex = state->getNameIndex();
+						if (nameIndex != -1) {
+							std::cout << "\t\tStateAssignment " << state->getName() <<" Index:"<<nameIndex<< std::endl;
+						}
+						else {
+							std::cout << "\t\tStateAssignment " << state->getName() << std::endl;
+						}
+						// output value
+						const StateAssignmentValue* value = state->getValue();
+						const std::string valueStr = value->toString();
+						std::cout << "\t\tValue:" << valueStr << std::endl;
+						
+					}
 				}
 			}
 		}

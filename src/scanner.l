@@ -54,6 +54,7 @@ typedef example::Parser::token_type token_type;
 /* Effect States (Direct3D 9) Token*/
 
 es_light_states LightAmbient|LightAttenuation0|LightAttenuation1|LightAttenuation2|LightDiffuse|LightDirection|LightEnable|LightFalloff|LightPhi|LightPosition|LightRange|LightSpecular|LightTheta|LightType
+es_material_states Material State|MaterialAmbient|MaterialDiffuse|MaterialEmissive|MaterialPower|MaterialSpecular
 
 es_all_states {es_light_states}
 
@@ -71,18 +72,19 @@ es_all_states {es_light_states}
 "/*"([^*]|"*"[^/])*"*/"  { /* skip comments */ }
 "//"[^\r\n]*             { /* skip comments */ }
 
-"pass" {return token::PASS;}
+"pass"          {return token::PASS;}
 "technique"     {return token::TECHNIQUE;}
-"compile"   {return token::COMPILE;}
-
+"compile"       {return token::COMPILE;}
+"float2"        {return token::FLOAT2;}
+"float3"        {return token::FLOAT3;}
+"float4"        {return token::FLOAT4;}
 {es_all_states} {
-        printf("find state name:{%s}",yytext);
         yylval->stringVal = new std::string(yytext, yyleng);
         return token::STATE_NAME;
 }
 
-"TRUE"  {yylval->boolVal = false;return token::BOOLEAN;}
-"FALSE" {yylval->boolVal = true;return token::BOOLEAN;}
+[tT][rR][uU][eE]  {yylval->boolVal = true;return token::BOOLEAN;}
+[fF][aA][lL][sS][eE] {yylval->boolVal = false;return token::BOOLEAN;}
 
 
 [0-9]+ {
@@ -90,7 +92,7 @@ es_all_states {es_light_states}
     return token::INTEGER;
 }
 
-[0-9]+"."[0-9]* {
+[0-9]+"."[0-9]*[fF]? {
     yylval->floatVal = atof(yytext);
     return token::FLOAT;
 }

@@ -78,15 +78,13 @@ class TechniqueNode;
 	bool 				  boolVal;
 
 }
-%token PASS
-%token TECHNIQUE
-%token <stringVal>  STATE_NAME
-%token <stringVal>  STRING
-%token <stringVal> 	IDENTIFIER
+%token PASS TECHNIQUE
+%token FLOAT2 FLOAT3 FLOAT4
+%token <stringVal>  STATE_NAME STRING IDENTIFIER
 %token <integerVal>   INTEGER;
 %token <floatVal> FLOAT;
 %token <boolVal>  BOOLEAN
-%token				END	     0	"end of file"
+%token	END	     0	"end of file"
 
 
 
@@ -111,7 +109,8 @@ class TechniqueNode;
 /* Sampler Stage States */
 /// End Of Effect States (Direct3D 9)
 
-
+%type <floatVal>   stmt_float
+%type <stringVal>  stmt_string
 %type <techValue>  stmt_tec
 %type <passValue>  stmt_pass
 %type <passValues> stmt_pass_list
@@ -144,21 +143,36 @@ class TechniqueNode;
 
  /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
 
+stmt_float: FLOAT {$$ = $1;}
+		   | INTEGER {$$ = $1;}
+
+stmt_string: STRING {$$ = $1;}
+			| STATE_NAME {$$ = $1;}
+			| IDENTIFIER  {$$ = $1;}
+
+
 stmt_state_value: INTEGER {$$ = new StateIntegerValue($1);}
-				| FLOAT   {$$ = new StateFloatValue($1);}
+				| FLOAT {$$ = new StateFloatValue($1);}
 				| BOOLEAN {$$ = new StateBooleanValue($1);}
-				| STRING  {$$ = new StateStringValue(*$1);delete $1;}
-				| IDENTIFIER  {$$ = new StateStringValue(*$1);delete $1;}
-				| STATE_NAME  {$$ = new StateStringValue(*$1);delete $1;}
-				| COMPILE IDENTIFIER IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
-				| COMPILE IDENTIFIER STRING '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
-				| COMPILE STRING STRING '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
-				| COMPILE STRING IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| stmt_string  {$$ = new StateStringValue(*$1);delete $1;}
+				| COMPILE stmt_string IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| FLOAT2 '<' stmt_float ',' stmt_float '>' {
+					float temp[2] = {$3,$5};
+					$$ = new StateFloat2Value(temp);
+				}
+				| FLOAT3 '<' stmt_float ',' stmt_float ',' stmt_float '>'  {
+					float temp[3] = {$3,$5,$7};
+					$$ = new StateFloat3Value(temp);
+				}
+				| FLOAT4 '<' stmt_float ',' stmt_float ',' stmt_float ',' stmt_float '>'  {
+					float temp[4] = {$3,$5,$7,$9};
+					$$ = new StateFloat4Value(temp);
+				}
 
 
 stmt_state_name_index: '[' INTEGER ']' {$$ = $2;}
 
-stmt_state: STATE_NAME '=' stmt_state_value ';' {$$ = new StateAssignmentNode(*$1,$3);delete $1;}
+stmt_state: 	STATE_NAME '=' stmt_state_value ';' {$$ = new StateAssignmentNode(*$1,$3,-1);delete $1;}
 				| STATE_NAME stmt_state_name_index '=' stmt_state_value ';' {$$ = new StateAssignmentNode(*$1,$4,$2);delete $1;}
 
 stmt_state_list:   /* empty */ {$$ = new std::vector<StateAssignmentNode*>();}

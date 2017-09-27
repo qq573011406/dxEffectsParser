@@ -7,6 +7,8 @@
 #include <map>
 #include <vector>
 #include <ostream>
+#include <string>
+#include <sstream>
 #include <stdexcept>
 #include <cmath>
 
@@ -19,6 +21,10 @@ enum class StateValueType
 	STRING,
 	INTEGER,
 	FLOAT,
+	FLOAT2,
+	FLOAT3,
+	FLOAT4,
+	D3DCOLOR,
 	UNKNOWN,
 };
 
@@ -34,6 +40,8 @@ public:
 	virtual ~StateAssignmentValue()
 	{
 	}
+
+	virtual std::string toString() const = 0;
 
 	const StateValueType getValueType() const { return m_ValueType; }
 
@@ -55,6 +63,12 @@ public:
 	const std::string getTarget() const { return m_Target; }
 	const std::string getEntryPoint() const { return m_Entrypoint; }
 
+	
+	virtual std::string toString() const override
+	{
+		return "Target:" + m_Target + " EntryPoint:" + m_Entrypoint;
+	}
+
 private:
 	std::string m_Target;
 	std::string m_Entrypoint;
@@ -72,6 +86,11 @@ public:
 
 	const bool getValue() const { return m_Val; }
 
+	virtual std::string toString()  const override
+	{
+		return m_Val ? "TRUE" : "FALSE";
+	}
+
 private:
 	bool m_Val;
 };
@@ -86,6 +105,13 @@ public:
 	~StateIntegerValue()override = default;
 
 	const int getValue() const { return m_Val; }
+
+	virtual std::string  toString()  const override
+	{
+		std::stringstream ss;
+		ss << m_Val;
+		return ss.str();
+	}
 
 private:
 	int m_Val;
@@ -102,8 +128,85 @@ public:
 
 	const float getValue() const { return m_Val; }
 
+	virtual  std::string toString()  const override
+	{
+		std::stringstream ss;
+		ss << m_Val;
+		return ss.str();
+	}
+
 private:
 	float m_Val;
+};
+
+class StateFloat2Value : public  StateAssignmentValue
+{
+public:
+	StateFloat2Value(float value[2]) :StateAssignmentValue(StateValueType::FLOAT2)
+	{
+		m_Val[0] = value[0];
+		m_Val[1] = value[1];
+	}
+	~StateFloat2Value()override = default;
+
+	const float* getValue() const { return m_Val; }
+
+	virtual  std::string toString()  const override
+	{
+		std::stringstream ss;
+		ss << "float2(" << m_Val[0] << "," << m_Val[1]<< ")";
+		return ss.str();
+	}
+
+private:
+	float m_Val[2];
+};
+class StateFloat3Value : public  StateAssignmentValue
+{
+public:
+	StateFloat3Value(float value[3]) :StateAssignmentValue(StateValueType::FLOAT3)
+	{
+		m_Val[0] = value[0];
+		m_Val[1] = value[1];
+		m_Val[2] = value[2];
+	}
+	~StateFloat3Value()override = default;
+
+	const float* getValue() const { return m_Val; }
+
+	virtual  std::string toString()  const override
+	{
+		std::stringstream ss;
+		ss << "float3(" << m_Val[0] << "," << m_Val[1] << "," << m_Val[2]<< ")";
+		return ss.str();
+	}
+
+private:
+	float m_Val[3];
+};
+class StateFloat4Value : public  StateAssignmentValue
+{
+public:
+	StateFloat4Value(float value[4]) :StateAssignmentValue(StateValueType::FLOAT4)
+	{
+		m_Val[0] = value[0];
+		m_Val[1] = value[1];
+		m_Val[2] = value[2];
+		m_Val[2] = value[3];
+	}
+	~StateFloat4Value()override = default;
+
+	const float* getValue() const { return m_Val; }
+
+	virtual  std::string toString()  const override
+	{
+		std::stringstream ss;
+		ss << "float4("<<m_Val[0]<<"," << m_Val[1] << "," << m_Val[2] << "," << m_Val[3] <<")";
+		return ss.str();
+	}
+
+private:
+	float m_Val[4];
 };
 
 
@@ -117,6 +220,11 @@ public:
 	~StateStringValue()override = default;
 
 	const std::string getValue() const { return m_Val; }
+
+	virtual std::string toString()  const override
+	{
+		return m_Val;
+	}
 
 private:
 	std::string m_Val;

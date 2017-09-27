@@ -107,13 +107,16 @@ namespace example {
      END = 0,
      PASS = 258,
      TECHNIQUE = 259,
-     STATE_NAME = 260,
-     STRING = 261,
-     IDENTIFIER = 262,
-     INTEGER = 263,
-     FLOAT = 264,
-     BOOLEAN = 265,
-     COMPILE = 266
+     FLOAT2 = 260,
+     FLOAT3 = 261,
+     FLOAT4 = 262,
+     STATE_NAME = 263,
+     STRING = 264,
+     IDENTIFIER = 265,
+     INTEGER = 266,
+     FLOAT = 267,
+     BOOLEAN = 268,
+     COMPILE = 269
    };
 
     };
@@ -291,7 +294,7 @@ namespace example {
 
 } // example
 /* Line 33 of lalr1.cc  */
-#line 295 "parser.h"
+#line 298 "parser.h"
 
 
 

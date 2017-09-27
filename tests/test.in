@@ -2,34 +2,22 @@ technique OcclusionTest_vs10_ps10
 {
 	pass P0
 	{
+
+		LightAttenuation0[8] = 15.38F;
+		LightEnable[5] = true;
+		LightEnable[6] = false;
+		LightType[1] = 3;
+		LightPosition[1] = float3<3,3,3>;
+		LightPosition[2] = float2<2,25.222f>;
 		// shaders
-		VertexShader = compile vs_2_0 vertexShader();
-		PixelShader  = compile ps_2_0 pixelShader();
-		
-		// turn off color masks and zwrite
-        //ZWriteEnable = 0;
-        //comment this line to debug. 
-        //ColorWriteEnable = 0; 
-        //FogEnable = False;
-        //cullmode = none;
-
-        // other settings (play it safe):
-        //AlphaBlendEnable = False;
-        //Lighting = False;
-        
-		//ColorOp[0] = SelectArg1;
-		//ColorArg1[0] = Diffuse;
-		//ColorOp[1] = Disable;
-
-		//AlphaOp[0] = SelectArg1;
-		//AlphaArg1[0] = Diffuse;
-		//AlphaOp[1] = Disable;
+		//VertexShader = compile vs_2_0 vertexShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
 	}
 
 	pass P1
 	{
-		VertexShader = compile vs_2_0 vertexShader2();
-		PixelShader  = compile ps_2_0 pixelShader2();
+		//VertexShader = compile vs_2_0 vertexShader2();
+		//PixelShader  = compile ps_2_0 pixelShader2();
 	}
 }
 
@@ -39,8 +27,8 @@ technique Test2
 	pass P0
 	{
 		// shaders
-		VertexShader = compile vs_2_0 vertexShader();
-		PixelShader  = compile ps_2_0 pixelShader();
+		//VertexShader = compile vs_2_0 vertexShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
 		
 		// turn off color masks and zwrite
         //ZWriteEnable = 0;
@@ -64,8 +52,8 @@ technique Test2
 
 	pass P1
 	{
-		VertexShader = compile vs_2_0 vertexShader2();
-		PixelShader  = compile ps_2_0 pixelShader2();
+		//VertexShader = compile vs_2_0 vertexShader2();
+		//PixelShader  = compile ps_2_0 pixelShader2();
 	}
 }
 
