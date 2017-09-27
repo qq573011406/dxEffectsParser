@@ -192,7 +192,7 @@ public:
 		m_Val[0] = value[0];
 		m_Val[1] = value[1];
 		m_Val[2] = value[2];
-		m_Val[2] = value[3];
+		m_Val[3] = value[3];
 	}
 	~StateFloat4Value()override = default;
 

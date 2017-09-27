@@ -10,7 +10,7 @@ technique OcclusionTest_vs10_ps10
 		LightPosition[1] = float3<3,3,3>;
 		LightPosition[2] = float2<2,25.222f>;
 
-		//MaterialDiffuse = float4<0.7f, 0.0f, 0.0f, 1.0f>;
+		MaterialDiffuse = float4<0.7f, 0.0f, 0.0f, 5>;
 		MaterialPower = 3.0f;
 
 
