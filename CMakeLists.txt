@@ -5,8 +5,6 @@ project(DxEffectsParser)
 
 if(WIN32)
 
-
-
     #$(YACC) -o parser.cc --defines=parser.h parser.yy
     add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc
     COMMAND ${PROJECT_SOURCE_DIR}/tools/bison.exe -o parser.cc --defines=parser.h ${PROJECT_SOURCE_DIR}/src/parser.yy
@@ -27,7 +25,7 @@ if(WIN32)
     
 
     
-    add_custom_target(parser ALL
+    add_custom_target(flexAndBison ALL
     DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.cc
     DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.cc
     )
@@ -37,13 +35,16 @@ if(WIN32)
 endif(WIN32)
 
 
-add_executable(exprtest
+add_library(fxParser
 ${PROJECT_SOURCE_DIR}/src/expression.h
 ${PROJECT_SOURCE_DIR}/src/parser.cc
 ${PROJECT_SOURCE_DIR}/src/scanner.cc
 ${PROJECT_SOURCE_DIR}/src/driver.h
 ${PROJECT_SOURCE_DIR}/src/driver.cc
-${PROJECT_SOURCE_DIR}/src/exprtest.cc
 )
+target_include_directories(fxParser PUBLIC ${PROJECT_SOURCE_DIR}/src/)
 
-target_include_directories(exprtest PRIVATE ${PROJECT_SOURCE_DIR}/src/)
+add_executable(fxParserTest ${PROJECT_SOURCE_DIR}/src/exprtest.cc)
+
+target_link_libraries(fxParserTest fxParser)
+
