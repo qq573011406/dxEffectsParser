@@ -1,5 +1,5 @@
 
-//HLSL_CODE_BEGIN
+
 // Author: LiXizhi,Clayman
 // Desc: 2013/6
 
@@ -182,7 +182,7 @@ float4 DamagedBlockPS(SelectBlockVSOut input) :COLOR0
 	// color.w = color.x * light_params.y;
 	return color;
 }
-//HLSL_CODE_END
+
 
 
 technique SimpleMesh_vs20_ps20

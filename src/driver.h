@@ -77,6 +77,9 @@ public:
     /** Reference to the calculator context filled during parsing of the
      * expressions. */
     class DxEffectsTree& calc;
+
+private:
+	std::string InsertCodeBlockTag(std::istream& in);
 };
 
 } // namespace example
