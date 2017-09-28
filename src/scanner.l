@@ -46,6 +46,7 @@ typedef example::Parser::token_type token_type;
 
 /* enables the use of start condition stacks */
 %option stack
+%option caseless
 
 %x PARSE_STATE_HLSLCODEBLOCK
 

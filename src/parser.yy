@@ -95,7 +95,6 @@ class TechniqueNode;
 
 %type <floatVal>   stmt_float
 %type <stringVal>  stmt_string
-%type <stringValues>  stmt_code_blocks
 %type <techValue>  stmt_tec
 %type <passValue>  stmt_pass
 %type <passValues> stmt_pass_list
@@ -140,6 +139,7 @@ stmt_state_value: INTEGER {$$ = new StateIntegerValue($1);}
 				| BOOLEAN {$$ = new StateBooleanValue($1);}
 				| stmt_string  {$$ = new StateStringValue(*$1);delete $1;}
 				| COMPILE stmt_string IDENTIFIER '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
+				| COMPILE stmt_string STATE_NAME '(' ')' {$$ = new StateCompileValue(*$2,*$3);delete $2;delete $3;}
 				| FLOAT2 '<' stmt_float ',' stmt_float '>' {
 					float temp[2] = {$3,$5};
 					$$ = new StateFloat2Value(temp);
@@ -187,13 +187,9 @@ stmt_tec:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
 stmt_tec_list: stmt_tec {}
               |   stmt_tec stmt_tec_list {}
 
-stmt_code_blocks : {}
-			| HLSL_CODE_BLOCK {driver.calc.AddCodeBlock(*$1);delete $1;}
-			| HLSL_CODE_BLOCK stmt_code_blocks {driver.calc.AddCodeBlock(*$1);delete $1;}
-
-start	:   stmt_code_blocks
-		|   stmt_code_blocks stmt_tec_list
-		|   stmt_tec_list
+start:   HLSL_CODE_BLOCK stmt_tec_list {
+				driver.calc.AddCodeBlock(*$1);delete $1;
+		}
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 

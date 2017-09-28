@@ -55,10 +55,9 @@ technique SimpleMesh_vs20_ps20
 {
 	pass P0
 	{
-		// shaders
 		VertexShader = compile vs_2_0 vertexShader();
-		PixelShader  = compile ps_2_0 pixelShader();
+		//PixelShader  = compile ps_2_0 pixelShader();
 		
-		FogEnable = false;
+		//FogEnable = false;
 	}
 }

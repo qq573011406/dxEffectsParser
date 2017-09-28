@@ -37,10 +37,10 @@ technique Default
     pass P0
     {
 		cullmode = none;
-		ZEnable = false;
-		ZWriteEnable = false;
-		FogEnable = False;
-		VertexShader = compile vs_1_1 FullScreenQuadVS();
-        PixelShader = compile ps_2_0 FilmScratchPS();
+		//ZEnable = False;
+		//ZWriteEnable = False;
+		//FogEnable = False;
+		//VertexShader = compile vs_1_1 FullScreenQuadVS();
+        //PixelShader = compile ps_2_0 FilmScratchPS();
     }
 }
