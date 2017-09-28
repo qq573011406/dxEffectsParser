@@ -154,7 +154,7 @@ public:
 	virtual  std::string toString()  const override
 	{
 		std::stringstream ss;
-		ss << "float2(" << m_Val[0] << "," << m_Val[1]<< ")";
+		ss << "float2<" << m_Val[0] << "," << m_Val[1]<< ">";
 		return ss.str();
 	}
 
@@ -177,7 +177,7 @@ public:
 	virtual  std::string toString()  const override
 	{
 		std::stringstream ss;
-		ss << "float3(" << m_Val[0] << "," << m_Val[1] << "," << m_Val[2]<< ")";
+		ss << "float3<" << m_Val[0] << "," << m_Val[1] << "," << m_Val[2]<< ">";
 		return ss.str();
 	}
 
@@ -201,7 +201,7 @@ public:
 	virtual  std::string toString()  const override
 	{
 		std::stringstream ss;
-		ss << "float4("<<m_Val[0]<<"," << m_Val[1] << "," << m_Val[2] << "," << m_Val[3] <<")";
+		ss << "float4<"<<m_Val[0]<<"," << m_Val[1] << "," << m_Val[2] << "," << m_Val[3] <<">";
 		return ss.str();
 	}
 
