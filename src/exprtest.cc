@@ -168,7 +168,7 @@ int main(int argc, char *argv[])
 			else {
 				files.push_back(path);
 			}
-
+			int totalFiled = 0;
 			for (auto filePath : files)
 			{
 
@@ -178,8 +178,11 @@ int main(int argc, char *argv[])
 				}
 				else {
 					std::cout << "Parse file:" << filePath << " failed!\n";
+					totalFiled++;
 				}
 			}
+
+			std::cout << "Total " << files.size() << " Failed:" << totalFiled << std::endl;
 
 		}
     }
