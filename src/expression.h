@@ -35,7 +35,7 @@ public:
 	StateAssignmentValue(StateValueType vt):
 		m_ValueType(StateValueType::UNKNOWN)
 	{
-
+		m_ValueType = vt;
 	}
 	virtual ~StateAssignmentValue()
 	{
