@@ -12,7 +12,7 @@ class DxEffectsTree;
 
 /** The example namespace is used to encapsulate the three parser classes
  * example::Parser, example::Scanner and example::Driver */
-namespace example {
+namespace DxEffectsParser {
 
 /** The Driver class brings together all components. It creates an instance of
  * the Parser and Scanner classes and connects them. Then the input stream is
@@ -24,7 +24,7 @@ class Driver
 {
 public:
     /// construct a new parser driver context
-    Driver(class DxEffectsTree& calc);
+    Driver(class DxEffectsTree& tree);
 
     /// enable debug output in the flex scanner
     bool trace_scanning;
@@ -76,7 +76,7 @@ public:
 
     /** Reference to the calculator context filled during parsing of the
      * expressions. */
-    class DxEffectsTree& calc;
+    class DxEffectsTree& tree;
 
 private:
 	std::string InsertCodeBlockTag(std::istream& in);

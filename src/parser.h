@@ -32,13 +32,13 @@
 
 /**
  ** \file parser.h
- ** Define the example::parser class.
+ ** Define the DxEffectsParser::parser class.
  */
 
 /* C++ LALR(1) parser skeleton written by Akim Demaille.  */
 
-#ifndef YY_EXAMPLE_PARSER_H_INCLUDED
-# define YY_EXAMPLE_PARSER_H_INCLUDED
+#ifndef YY_DXEFFECTSPARSER_PARSER_H_INCLUDED
+# define YY_DXEFFECTSPARSER_PARSER_H_INCLUDED
 
 
 
@@ -54,7 +54,7 @@
 #endif
 
 
-namespace example {
+namespace DxEffectsParser {
 /* Line 33 of lalr1.cc  */
 #line 60 "parser.h"
 
@@ -296,10 +296,10 @@ namespace example {
     class Driver& driver;
   };
 
-} // example
+} // DxEffectsParser
 /* Line 33 of lalr1.cc  */
 #line 302 "parser.h"
 
 
 
-#endif /* !YY_EXAMPLE_PARSER_H_INCLUDED  */
+#endif /* !YY_DXEFFECTSPARSER_PARSER_H_INCLUDED  */

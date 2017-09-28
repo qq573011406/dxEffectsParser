@@ -4,7 +4,7 @@
 #include <fstream>
 
 #include "driver.h"
-#include "expression.h"
+#include "dxeffects.h"
 
 
 #ifdef WIN32  
@@ -84,7 +84,7 @@ std::vector<std::string> getFiles(std::string cate_dir)
 bool test_file(std::string filePath, bool p, bool s, bool v)
 {
 	DxEffectsTree tree;
-	example::Driver driver(tree);
+	DxEffectsParser::Driver driver(tree);
 	driver.trace_parsing = p;
 	driver.trace_scanning = s;
 

@@ -32,16 +32,16 @@
 
 /**
  ** \file stack.hh
- ** Define the example::stack class.
+ ** Define the DxEffectsParser::stack class.
  */
 
-#ifndef YY_EXAMPLE_STACK_HH_INCLUDED
-# define YY_EXAMPLE_STACK_HH_INCLUDED
+#ifndef YY_DXEFFECTSPARSER_STACK_HH_INCLUDED
+# define YY_DXEFFECTSPARSER_STACK_HH_INCLUDED
 
 # include <deque>
 
 
-namespace example {
+namespace DxEffectsParser {
 /* Line 34 of stack.hh  */
 #line 47 "stack.hh"
   template <class T, class S = std::deque<T> >
@@ -126,8 +126,8 @@ namespace example {
     unsigned int range_;
   };
 
-} // example
+} // DxEffectsParser
 /* Line 116 of stack.hh  */
 #line 132 "stack.hh"
 
-#endif /* !YY_EXAMPLE_STACK_HH_INCLUDED  */
+#endif /* !YY_DXEFFECTSPARSER_STACK_HH_INCLUDED  */

@@ -13,8 +13,8 @@
 std::stringstream code_block;
 
 /* import the parser's token type into a local typedef */
-typedef example::Parser::token token;
-typedef example::Parser::token_type token_type;
+typedef DxEffectsParser::Parser::token token;
+typedef DxEffectsParser::Parser::token_type token_type;
 
 /* By default yylex returns int, we use token_type. Unfortunately yyterminate
  * by default returns 0, which is not of token_type. */
@@ -32,7 +32,7 @@ typedef example::Parser::token_type token_type;
 %option c++
 
 /* change the name of the scanner class. results in "ExampleFlexLexer" */
-%option prefix="Example"
+%option prefix="DxEffectsParser"
 
 /* the manual says "somewhat more optimized" */
 %option batch
@@ -160,11 +160,11 @@ es_all_states {es_light_states}|{es_material_states}|{es_render_states}|{es_samp
 
 %% /*** Additional Code ***/
 
-namespace example {
+namespace DxEffectsParser {
 
 Scanner::Scanner(std::istream* in,
 		 std::ostream* out)
-    : ExampleFlexLexer(in, out)
+    : DxEffectsParserFlexLexer(in, out)
 {
 }
 
@@ -187,7 +187,7 @@ void Scanner::set_debug(bool b)
 #undef yylex
 #endif
 
-int ExampleFlexLexer::yylex()
+int DxEffectsParserFlexLexer::yylex()
 {
     std::cerr << "in ExampleFlexLexer::yylex() !" << std::endl;
     return 0;
@@ -199,7 +199,7 @@ int ExampleFlexLexer::yylex()
  * another input file, and scanning continues. If it returns true (non-zero),
  * then the scanner terminates, returning 0 to its caller. */
 
-int ExampleFlexLexer::yywrap()
+int DxEffectsParserFlexLexer::yywrap()
 {
     return 1;
 }

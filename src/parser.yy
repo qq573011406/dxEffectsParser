@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#include "expression.h"
+#include "dxeffects.h"
 
 class TechniqueNode;
 
@@ -33,7 +33,7 @@ class TechniqueNode;
 %skeleton "lalr1.cc"
 
 /* namespace to enclose parser in */
-%name-prefix="example"
+%name-prefix="DxEffectsParser"
 
 /* set the parser's class identifier */
 %define "parser_class_name" "Parser"
@@ -179,7 +179,7 @@ stmt_pass_list: stmt_pass {$$ = new std::vector<PassNode*>();$$->push_back($1);}
 
 stmt_tec:	TECHNIQUE IDENTIFIER '{' stmt_pass_list '}' {
                                                                 $$ = new TechniqueNode(*$2,*$4);
-																driver.calc.AddTechnique(*$$);
+																driver.tree.AddTechnique(*$$);
 																delete $2;
                                                                 delete $4;
                                                             }
@@ -188,14 +188,14 @@ stmt_tec_list: stmt_tec {}
               |   stmt_tec stmt_tec_list {}
 
 start:   HLSL_CODE_BLOCK stmt_tec_list {
-				driver.calc.AddCodeBlock(*$1);delete $1;
+				driver.tree.AddCodeBlock(*$1);delete $1;
 		}
 
  /*** END EXAMPLE - Change the example grammar rules above ***/
 
 %% /*** Additional Code ***/
 
-void example::Parser::error(const Parser::location_type& l,
+void DxEffectsParser::Parser::error(const Parser::location_type& l,
 			    const std::string& m)
 {
     driver.error(l, m);

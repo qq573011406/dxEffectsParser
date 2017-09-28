@@ -32,16 +32,16 @@
 
 /**
  ** \file location.hh
- ** Define the example::location class.
+ ** Define the DxEffectsParser::location class.
  */
 
-#ifndef YY_EXAMPLE_LOCATION_HH_INCLUDED
-# define YY_EXAMPLE_LOCATION_HH_INCLUDED
+#ifndef YY_DXEFFECTSPARSER_LOCATION_HH_INCLUDED
+# define YY_DXEFFECTSPARSER_LOCATION_HH_INCLUDED
 
 # include "position.hh"
 
 
-namespace example {
+namespace DxEffectsParser {
 /* Line 166 of location.cc  */
 #line 47 "location.hh"
 
@@ -174,8 +174,8 @@ namespace example {
   }
 
 
-} // example
+} // DxEffectsParser
 /* Line 296 of location.cc  */
 #line 180 "location.hh"
 
-#endif /* !YY_EXAMPLE_LOCATION_HH_INCLUDED  */
+#endif /* !YY_DXEFFECTSPARSER_LOCATION_HH_INCLUDED  */

@@ -18,6 +18,9 @@ if(WIN32)
     add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
     COMMAND ${PROJECT_SOURCE_DIR}/tools/flex.exe -o scanner.cc ${PROJECT_SOURCE_DIR}/src/scanner.l
     COMMAND move /y scanner.cc ${PROJECT_SOURCE_DIR}/src/scanner.cc
+    COMMAND move /y location.hh ${PROJECT_SOURCE_DIR}/src/location.hh
+    COMMAND move /y position.hh ${PROJECT_SOURCE_DIR}/src/position.hh
+    COMMAND move /y stack.hh ${PROJECT_SOURCE_DIR}/src/stack.hh
     MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/scanner.l
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing flex on scanner.l"
@@ -36,7 +39,7 @@ endif(WIN32)
 
 
 add_library(fxParser
-${PROJECT_SOURCE_DIR}/src/expression.h
+${PROJECT_SOURCE_DIR}/src/dxeffects.h
 ${PROJECT_SOURCE_DIR}/src/parser.cc
 ${PROJECT_SOURCE_DIR}/src/scanner.cc
 ${PROJECT_SOURCE_DIR}/src/driver.h

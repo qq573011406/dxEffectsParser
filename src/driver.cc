@@ -7,12 +7,12 @@
 #include "driver.h"
 #include "scanner.h"
 
-namespace example {
+namespace DxEffectsParser {
 
-Driver::Driver(class DxEffectsTree& _calc)
+Driver::Driver(class DxEffectsTree& _tree)
     : trace_scanning(false),
       trace_parsing(false),
-      calc(_calc)
+	  tree(_tree)
 {
 }
 

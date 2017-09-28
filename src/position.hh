@@ -32,11 +32,11 @@
 
 /**
  ** \file position.hh
- ** Define the example::position class.
+ ** Define the DxEffectsParser::position class.
  */
 
-#ifndef YY_EXAMPLE_POSITION_HH_INCLUDED
-# define YY_EXAMPLE_POSITION_HH_INCLUDED
+#ifndef YY_DXEFFECTSPARSER_POSITION_HH_INCLUDED
+# define YY_DXEFFECTSPARSER_POSITION_HH_INCLUDED
 
 # include <algorithm> // std::max
 # include <iostream>
@@ -51,7 +51,7 @@
 # endif
 
 
-namespace example {
+namespace DxEffectsParser {
 /* Line 36 of location.cc  */
 #line 57 "position.hh"
   /// Abstract a position.
@@ -166,7 +166,7 @@ namespace example {
   }
 
 
-} // example
+} // DxEffectsParser
 /* Line 148 of location.cc  */
 #line 172 "position.hh"
-#endif /* !YY_EXAMPLE_POSITION_HH_INCLUDED  */
+#endif /* !YY_DXEFFECTSPARSER_POSITION_HH_INCLUDED  */

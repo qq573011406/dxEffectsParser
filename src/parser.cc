@@ -31,7 +31,7 @@
    version 2.2 of Bison.  */
 
 // Take the name prefix into account.
-#define yylex   examplelex
+#define yylex   DxEffectsParserlex
 
 /* First part of user declarations.  */
 /* Line 280 of lalr1.cc  */
@@ -42,7 +42,7 @@
 #include <string>
 #include <vector>
 
-#include "expression.h"
+#include "dxeffects.h"
 
 class TechniqueNode;
 
@@ -163,7 +163,7 @@ do {					\
 #define YYRECOVERING()  (!!yyerrstatus_)
 
 
-namespace example {
+namespace DxEffectsParser {
 /* Line 354 of lalr1.cc  */
 #line 169 "parser.cc"
 
@@ -661,7 +661,7 @@ namespace example {
 #line 180 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
                                                                 (yyval.techValue) = new TechniqueNode(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (4)].passValues));
-																driver.calc.AddTechnique(*(yyval.techValue));
+																driver.tree.AddTechnique(*(yyval.techValue));
 																delete (yysemantic_stack_[(5) - (2)].stringVal);
                                                                 delete (yysemantic_stack_[(5) - (4)].passValues);
                                                             }
@@ -683,7 +683,7 @@ namespace example {
 /* Line 671 of lalr1.cc  */
 #line 190 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
     {
-				driver.calc.AddCodeBlock(*(yysemantic_stack_[(2) - (1)].stringVal));delete (yysemantic_stack_[(2) - (1)].stringVal);
+				driver.tree.AddCodeBlock(*(yysemantic_stack_[(2) - (1)].stringVal));delete (yysemantic_stack_[(2) - (1)].stringVal);
 		}
     break;
 
@@ -1248,14 +1248,14 @@ namespace example {
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
 
-} // example
+} // DxEffectsParser
 /* Line 1142 of lalr1.cc  */
 #line 1254 "parser.cc"
 /* Line 1143 of lalr1.cc  */
 #line 196 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
  /*** Additional Code ***/
 
-void example::Parser::error(const Parser::location_type& l,
+void DxEffectsParser::Parser::error(const Parser::location_type& l,
 			    const std::string& m)
 {
     driver.error(l, m);
