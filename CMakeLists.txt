@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 
 project(DxEffectsParser)
 
+set (CMAKE_CXX_STANDARD 11)
 
 if(WIN32)
 
@@ -25,17 +26,34 @@ if(WIN32)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing flex on scanner.l"
     )
-    
-
-    
-    add_custom_target(flexAndBison ALL
-    DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.cc
-    DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.cc
-    )
-    
-    set_source_files_properties(${PROJECT_SOURCE_DIR}/src/scanner.cc PROPERTIES GENERATED 1)
-    set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.cc PROPERTIES GENERATED 1)
 endif(WIN32)
+if(APPLE)
+
+  #$(YACC) -o parser.cc --defines=parser.h parser.yy
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc
+  COMMAND bison -o parser.cc --defines=parser.h parser.yy
+  MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/parser.yy
+  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
+  COMMENT "Executing Bison on /parser.yy"
+  )
+
+  #$(LEX) -o scanner.cc scanner.ll
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
+  COMMAND flex -o scanner.cc scanner.l
+  MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/scanner.l
+  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
+  COMMENT "Executing flex on scanner.l"
+  )
+
+endif(APPLE)
+
+add_custom_target(flexAndBison ALL
+DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.cc
+DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.cc
+)
+
+set_source_files_properties(${PROJECT_SOURCE_DIR}/src/scanner.cc PROPERTIES GENERATED 1)
+set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.cc PROPERTIES GENERATED 1)
 
 
 add_library(fxParser
