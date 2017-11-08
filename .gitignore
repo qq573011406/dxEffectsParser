@@ -42,7 +42,6 @@ tools/bin/dxeffect.output
 src/parser.cc
 src/parser.h
 src/scanner.cc
-src/scanner.h
 src/location.hh
 src/position.hh
 src/stack.hh
