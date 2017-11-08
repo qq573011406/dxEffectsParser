@@ -39,3 +39,10 @@ src/Gen_dxeffect.cpp
 tools/bin/dxeffect.output
 
 !tools/**/*.*
+src/parser.cc
+src/parser.h
+src/scanner.cc
+src/scanner.h
+src/location.hh
+src/position.hh
+src/stack.hh

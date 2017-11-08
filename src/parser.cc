@@ -35,7 +35,7 @@
 
 /* First part of user declarations.  */
 /* Line 280 of lalr1.cc  */
-#line 4 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 4 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
  /*** C/C++ Declarations ***/
 
 #include <cstdio>
@@ -56,7 +56,7 @@ class TechniqueNode;
 
 /* User implementation prologue.  */
 /* Line 286 of lalr1.cc  */
-#line 112 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 112 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
 
 
 #include "driver.h"
@@ -269,21 +269,21 @@ namespace DxEffectsParser {
       {
         case 10: /* IDENTIFIER */
 /* Line 456 of lalr1.cc  */
-#line 106 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 106 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).stringVal); };
 /* Line 456 of lalr1.cc  */
 #line 276 "parser.cc"
         break;
       case 34: /* stmt_pass */
 /* Line 456 of lalr1.cc  */
-#line 108 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 108 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).passValue); };
 /* Line 456 of lalr1.cc  */
 #line 283 "parser.cc"
         break;
       case 36: /* stmt_tec */
 /* Line 456 of lalr1.cc  */
-#line 107 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 107 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
         { delete ((*yyvaluep).techValue); };
 /* Line 456 of lalr1.cc  */
 #line 290 "parser.cc"
@@ -381,7 +381,7 @@ namespace DxEffectsParser {
 
 /* User initialization code.  */
 /* Line 546 of lalr1.cc  */
-#line 44 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 44 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
@@ -507,73 +507,73 @@ namespace DxEffectsParser {
       {
           case 2:
 /* Line 671 of lalr1.cc  */
-#line 129 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 129 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.floatVal) = (yysemantic_stack_[(1) - (1)].floatVal);}
     break;
 
   case 3:
 /* Line 671 of lalr1.cc  */
-#line 130 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 130 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.floatVal) = (yysemantic_stack_[(1) - (1)].integerVal);}
     break;
 
   case 4:
 /* Line 671 of lalr1.cc  */
-#line 132 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 132 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 5:
 /* Line 671 of lalr1.cc  */
-#line 133 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 133 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 6:
 /* Line 671 of lalr1.cc  */
-#line 134 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 134 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stringVal) = (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 7:
 /* Line 671 of lalr1.cc  */
-#line 137 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 137 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateIntegerValue((yysemantic_stack_[(1) - (1)].integerVal));}
     break;
 
   case 8:
 /* Line 671 of lalr1.cc  */
-#line 138 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 138 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateFloatValue((yysemantic_stack_[(1) - (1)].floatVal));}
     break;
 
   case 9:
 /* Line 671 of lalr1.cc  */
-#line 139 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 139 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateBooleanValue((yysemantic_stack_[(1) - (1)].boolVal));}
     break;
 
   case 10:
 /* Line 671 of lalr1.cc  */
-#line 140 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 140 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateStringValue(*(yysemantic_stack_[(1) - (1)].stringVal));delete (yysemantic_stack_[(1) - (1)].stringVal);}
     break;
 
   case 11:
 /* Line 671 of lalr1.cc  */
-#line 141 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 141 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateCompileValue(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (3)].stringVal));delete (yysemantic_stack_[(5) - (2)].stringVal);delete (yysemantic_stack_[(5) - (3)].stringVal);}
     break;
 
   case 12:
 /* Line 671 of lalr1.cc  */
-#line 142 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 142 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateValue) = new StateCompileValue(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (3)].stringVal));delete (yysemantic_stack_[(5) - (2)].stringVal);delete (yysemantic_stack_[(5) - (3)].stringVal);}
     break;
 
   case 13:
 /* Line 671 of lalr1.cc  */
-#line 143 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 143 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 					float temp[2] = {(yysemantic_stack_[(6) - (3)].floatVal),(yysemantic_stack_[(6) - (5)].floatVal)};
 					(yyval.stateValue) = new StateFloat2Value(temp);
@@ -582,7 +582,7 @@ namespace DxEffectsParser {
 
   case 14:
 /* Line 671 of lalr1.cc  */
-#line 147 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 147 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 					float temp[3] = {(yysemantic_stack_[(8) - (3)].floatVal),(yysemantic_stack_[(8) - (5)].floatVal),(yysemantic_stack_[(8) - (7)].floatVal)};
 					(yyval.stateValue) = new StateFloat3Value(temp);
@@ -591,7 +591,7 @@ namespace DxEffectsParser {
 
   case 15:
 /* Line 671 of lalr1.cc  */
-#line 151 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 151 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 					float temp[4] = {(yysemantic_stack_[(10) - (3)].floatVal),(yysemantic_stack_[(10) - (5)].floatVal),(yysemantic_stack_[(10) - (7)].floatVal),(yysemantic_stack_[(10) - (9)].floatVal)};
 					(yyval.stateValue) = new StateFloat4Value(temp);
@@ -600,31 +600,31 @@ namespace DxEffectsParser {
 
   case 16:
 /* Line 671 of lalr1.cc  */
-#line 157 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 157 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.integerVal) = (yysemantic_stack_[(3) - (2)].integerVal);}
     break;
 
   case 17:
 /* Line 671 of lalr1.cc  */
-#line 159 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 159 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValue) = new StateAssignmentNode(*(yysemantic_stack_[(4) - (1)].stringVal),(yysemantic_stack_[(4) - (3)].stateValue),-1);delete (yysemantic_stack_[(4) - (1)].stringVal);}
     break;
 
   case 18:
 /* Line 671 of lalr1.cc  */
-#line 160 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 160 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValue) = new StateAssignmentNode(*(yysemantic_stack_[(5) - (1)].stringVal),(yysemantic_stack_[(5) - (4)].stateValue),(yysemantic_stack_[(5) - (2)].integerVal));delete (yysemantic_stack_[(5) - (1)].stringVal);}
     break;
 
   case 19:
 /* Line 671 of lalr1.cc  */
-#line 162 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 162 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.stateAssignmentValues) = new std::vector<StateAssignmentNode*>();}
     break;
 
   case 20:
 /* Line 671 of lalr1.cc  */
-#line 163 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 163 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 												(yyval.stateAssignmentValues) = new std::vector<StateAssignmentNode*>();
 												(yyval.stateAssignmentValues)->push_back((yysemantic_stack_[(2) - (1)].stateAssignmentValue));
@@ -635,19 +635,19 @@ namespace DxEffectsParser {
 
   case 21:
 /* Line 671 of lalr1.cc  */
-#line 170 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 170 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.passValue) = new PassNode(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (4)].stateAssignmentValues));delete (yysemantic_stack_[(5) - (2)].stringVal);}
     break;
 
   case 22:
 /* Line 671 of lalr1.cc  */
-#line 172 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 172 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {(yyval.passValues) = new std::vector<PassNode*>();(yyval.passValues)->push_back((yysemantic_stack_[(1) - (1)].passValue));}
     break;
 
   case 23:
 /* Line 671 of lalr1.cc  */
-#line 173 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 173 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 											(yyval.passValues) = new std::vector<PassNode*>();
 											(yyval.passValues)->push_back((yysemantic_stack_[(2) - (1)].passValue));
@@ -658,7 +658,7 @@ namespace DxEffectsParser {
 
   case 24:
 /* Line 671 of lalr1.cc  */
-#line 180 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 180 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
                                                                 (yyval.techValue) = new TechniqueNode(*(yysemantic_stack_[(5) - (2)].stringVal),*(yysemantic_stack_[(5) - (4)].passValues));
 																driver.tree.AddTechnique(*(yyval.techValue));
@@ -669,19 +669,19 @@ namespace DxEffectsParser {
 
   case 25:
 /* Line 671 of lalr1.cc  */
-#line 187 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 187 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {}
     break;
 
   case 26:
 /* Line 671 of lalr1.cc  */
-#line 188 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 188 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {}
     break;
 
   case 27:
 /* Line 671 of lalr1.cc  */
-#line 190 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 190 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
     {
 				driver.tree.AddCodeBlock(*(yysemantic_stack_[(2) - (1)].stringVal));delete (yysemantic_stack_[(2) - (1)].stringVal);
 		}
@@ -1252,7 +1252,7 @@ namespace DxEffectsParser {
 /* Line 1142 of lalr1.cc  */
 #line 1254 "parser.cc"
 /* Line 1143 of lalr1.cc  */
-#line 196 "E:/Source/GitRepos/dxEffectsParser/src/parser.yy"
+#line 196 "E:/Source/GitRepos/dxEffects2glEffects/External/dxEffectsParser/src/parser.yy"
  /*** Additional Code ***/
 
 void DxEffectsParser::Parser::error(const Parser::location_type& l,
