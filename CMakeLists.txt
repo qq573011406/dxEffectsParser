@@ -11,7 +11,7 @@ if(WIN32)
     COMMAND ${PROJECT_SOURCE_DIR}/tools/bison.exe -o parser.cc --defines=parser.h ${PROJECT_SOURCE_DIR}/src/parser.yy
     COMMAND move /y parser.cc ${PROJECT_SOURCE_DIR}/src/parser.cc
     COMMAND move /y parser.h ${PROJECT_SOURCE_DIR}/src/parser.h
-    MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/parser.yy
+    DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.yy
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing Bison on /parser.yy"
     )
@@ -22,7 +22,7 @@ if(WIN32)
     COMMAND move /y location.hh ${PROJECT_SOURCE_DIR}/src/location.hh
     COMMAND move /y position.hh ${PROJECT_SOURCE_DIR}/src/position.hh
     COMMAND move /y stack.hh ${PROJECT_SOURCE_DIR}/src/stack.hh
-    MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/scanner.l
+    DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.l
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing flex on scanner.l"
     )
@@ -32,7 +32,7 @@ if(APPLE)
   #$(YACC) -o parser.cc --defines=parser.h parser.yy
   add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc
   COMMAND bison -o parser.cc --defines=parser.h parser.yy
-  MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/parser.yy
+  DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.yy
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
   COMMENT "Executing Bison on /parser.yy"
   )
@@ -40,17 +40,12 @@ if(APPLE)
   #$(LEX) -o scanner.cc scanner.ll
   add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
   COMMAND flex -o scanner.cc scanner.l
-  MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/src/scanner.l
+  DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.l
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
   COMMENT "Executing flex on scanner.l"
   )
 
 endif(APPLE)
-
-add_custom_target(flexAndBison ALL
-DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.cc
-DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.cc
-)
 
 set_source_files_properties(${PROJECT_SOURCE_DIR}/src/scanner.cc PROPERTIES GENERATED 1)
 set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.cc PROPERTIES GENERATED 1)
