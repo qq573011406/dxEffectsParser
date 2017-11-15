@@ -41,7 +41,7 @@ if(APPLE)
   )
 
   #$(LEX) -o scanner.cc scanner.ll
-  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc ${PROJECT_SOURCE_DIR}/src/scanner.cc
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
   ${PROJECT_SOURCE_DIR}/src/location.hh 
   ${PROJECT_SOURCE_DIR}/src/position.hh
   ${PROJECT_SOURCE_DIR}/src/stack.hh
