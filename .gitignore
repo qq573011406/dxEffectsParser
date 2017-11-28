@@ -33,15 +33,3 @@
 
 
 build/
-src/dxeffect_tab.h
-src/Gen_dxeffect_tab.cpp
-src/Gen_dxeffect.cpp
-tools/bin/dxeffect.output
-
-!tools/**/*.*
-src/parser.h
-src/scanner.cc
-src/location.hh
-src/position.hh
-src/stack.hh
-src/parser.cc

@@ -2,10 +2,15 @@ cmake_minimum_required(VERSION 3.1)
 
 project(DxEffectsParser)
 
+option(GenerateScannerCode "Generate scanner code " OFF)
+option(GenerateParserCode "Generate parser code" OFF)
+
+
 set (CMAKE_CXX_STANDARD 11)
 
 if(WIN32)
 
+  if(GenerateParserCode)
     #$(YACC) -o parser.cc --defines=parser.h parser.yy
     add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc ${PROJECT_SOURCE_DIR}/src/parser.h
     COMMAND ${PROJECT_SOURCE_DIR}/tools/bison.exe -o parser.cc --defines=parser.h ${PROJECT_SOURCE_DIR}/src/parser.yy
@@ -15,6 +20,8 @@ if(WIN32)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing Bison on /parser.yy"
     )
+  endif()
+  if(GenerateScannerCode)
     #$(LEX) -o scanner.cc scanner.ll
     add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc 
     ${PROJECT_SOURCE_DIR}/src/location.hh 
@@ -29,36 +36,47 @@ if(WIN32)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tools/
     COMMENT "Executing flex on scanner.l"
     )
+  endif()
 endif(WIN32)
+
 if(APPLE)
 
-  #$(YACC) -o parser.cc --defines=parser.h parser.yy
-  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc ${PROJECT_SOURCE_DIR}/src/parser.h
-  COMMAND bison -o parser.cc --defines=parser.h parser.yy
-  DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.yy
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
-  COMMENT "Executing Bison on /parser.yy"
-  )
-
-  #$(LEX) -o scanner.cc scanner.ll
-  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
-  ${PROJECT_SOURCE_DIR}/src/location.hh 
-  ${PROJECT_SOURCE_DIR}/src/position.hh
-  ${PROJECT_SOURCE_DIR}/src/stack.hh
-  COMMAND flex -o scanner.cc scanner.l
-  DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.l
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
-  COMMENT "Executing flex on scanner.l"
-  )
+  if(GenerateParserCode)
+    #$(YACC) -o parser.cc --defines=parser.h parser.yy
+    add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/parser.cc ${PROJECT_SOURCE_DIR}/src/parser.h
+      COMMAND bison -o parser.cc --defines=parser.h parser.yy
+      DEPENDS ${PROJECT_SOURCE_DIR}/src/parser.yy
+      WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
+      COMMENT "Executing Bison on /parser.yy"
+    )
+  endif()
+  if(GenerateScannerCode)
+    #$(LEX) -o scanner.cc scanner.ll
+    add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/src/scanner.cc
+      ${PROJECT_SOURCE_DIR}/src/location.hh 
+      ${PROJECT_SOURCE_DIR}/src/position.hh
+      ${PROJECT_SOURCE_DIR}/src/stack.hh
+      COMMAND flex -o scanner.cc scanner.l
+      DEPENDS ${PROJECT_SOURCE_DIR}/src/scanner.l
+      WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src/
+      COMMENT "Executing flex on scanner.l"
+    )
+  endif()
 
 endif(APPLE)
 
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/scanner.cc PROPERTIES GENERATED 1)
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.cc PROPERTIES GENERATED 1)
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.h PROPERTIES GENERATED 1)
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/location.h PROPERTIES GENERATED 1)
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/position.h PROPERTIES GENERATED 1)
-set_source_files_properties(${PROJECT_SOURCE_DIR}/src/stack.h PROPERTIES GENERATED 1)
+if(GenerateScannerCode)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/location.hh PROPERTIES GENERATED 1)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/position.hh PROPERTIES GENERATED 1)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/stack.hh PROPERTIES GENERATED 1)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/scanner.cc PROPERTIES GENERATED 1)
+endif()
+
+if(GenerateParserCode)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.cc PROPERTIES GENERATED 1)
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/parser.h PROPERTIES GENERATED 1)
+endif()
+
 
 add_library(fxParser
 ${PROJECT_SOURCE_DIR}/src/dxeffects.h
@@ -66,9 +84,9 @@ ${PROJECT_SOURCE_DIR}/src/parser.cc
 ${PROJECT_SOURCE_DIR}/src/parser.h
 ${PROJECT_SOURCE_DIR}/src/scanner.cc
 ${PROJECT_SOURCE_DIR}/src/scanner.h
-${PROJECT_SOURCE_DIR}/src/location.h
-${PROJECT_SOURCE_DIR}/src/position.h
-${PROJECT_SOURCE_DIR}/src/stack.h
+${PROJECT_SOURCE_DIR}/src/location.hh
+${PROJECT_SOURCE_DIR}/src/position.hh
+${PROJECT_SOURCE_DIR}/src/stack.hh
 ${PROJECT_SOURCE_DIR}/src/driver.h
 ${PROJECT_SOURCE_DIR}/src/driver.cc
 )
