@@ -331,7 +331,8 @@ public:
 
 	void AddCodeBlock(std::string hlslCode)
 	{
-		m_HLSLCodeBlock << hlslCode;
+		// Remove first \n . see Driver::InsertCodeBlockTag
+		m_HLSLCodeBlock << hlslCode.substr(1,hlslCode.size() - 1);
 	}
 private:
 	std::vector<TechniqueNode*> m_Techniques;
