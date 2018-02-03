@@ -84,7 +84,7 @@ ${PROJECT_SOURCE_DIR}/src/driver.cc
 )
 target_include_directories(fxParser PUBLIC ${PROJECT_SOURCE_DIR}/src/)
 
-add_executable(fxParserTest ${PROJECT_SOURCE_DIR}/src/exprtest.cc)
+#add_executable(fxParserTest ${PROJECT_SOURCE_DIR}/src/exprtest.cc)
 
-target_link_libraries(fxParserTest fxParser)
+#target_link_libraries(fxParserTest fxParser)
 

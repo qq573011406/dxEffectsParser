@@ -331,7 +331,7 @@ public:
 
 	void AddCodeBlock(std::string hlslCode)
 	{
-		m_HLSLCodeBlock << hlslCode << std::endl;
+		m_HLSLCodeBlock << hlslCode;
 	}
 private:
 	std::vector<TechniqueNode*> m_Techniques;
